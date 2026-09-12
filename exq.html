@@ -653,14 +653,6 @@ input[type=file]{display:none;}
 #quickAddFab.hidden{opacity:0;pointer-events:none;}
 @media(min-width:700px){#quickAddFab{right:24px;bottom:24px;}}
 
-/* ── SWIPE HINT ──────────────────────────────── */
-.swipe-hint{
-  position:absolute;bottom:6px;left:50%;transform:translateX(-50%);
-  font-size:10px;color:var(--muted);display:flex;align-items:center;gap:4px;
-  opacity:0;animation:swipe-fade 3s ease 1.5s forwards;pointer-events:none;
-}
-@keyframes swipe-fade{0%{opacity:0}20%{opacity:.6}80%{opacity:.6}100%{opacity:0}}
-
 /* ── OVERDUE PULSE ───────────────────────────── */
 @keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.75}}
 
@@ -2928,7 +2920,6 @@ function initSelect(){
   setTheme(savedTheme);
   syncThemeSwatches(savedTheme);
   updateHeaderSub();rebuildNavControls();renderOverview();renderMonths();renderDataScreen();checkBackupReminder();
-  initSwipeGesture();
   updateAmountsHiddenBtn();
 }
 
@@ -2966,25 +2957,6 @@ function onSearchInput(val){
   _searchQuery=val.trim().toLowerCase();
   document.getElementById('searchClear').classList.toggle('show',!!_searchQuery);
   if(activeScreen==='overview')renderSvList();
-}
-
-/* ── SWIPE GESTURE (horizontal) ──────────────── */
-function initSwipeGesture(){
-  const el=document.getElementById('screen-overview');
-  if(!el)return;
-  let sx=0,sy=0,startT=0;
-  el.addEventListener('touchstart',e=>{
-    sx=e.touches[0].clientX;sy=e.touches[0].clientY;startT=Date.now();
-  },{passive:true});
-  el.addEventListener('touchend',e=>{
-    const dx=e.changedTouches[0].clientX-sx;
-    const dy=e.changedTouches[0].clientY-sy;
-    const dt=Date.now()-startT;
-    // Horizontal swipe: fast, more horizontal than vertical, min distance 55px
-    if(Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.6&&dt<400){
-      if(dx<0)swipeMonth(1); else swipeMonth(-1);
-    }
-  },{passive:true});
 }
 
 /* ── AMOUNTS HIDDEN TOGGLE ───────────────────── */
