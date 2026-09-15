@@ -1699,7 +1699,8 @@ function renderInterestScreen(){
   if(intYear===null)_intInitMonth();
   document.getElementById('intMonthLabel').textContent=_intMonthName()+' '+intYear;
   _renderIntKPI();
-  _renderIntTable();
+  const sumVisible=document.getElementById('intSumView').style.display!=='none';
+  if(sumVisible)_renderIntSummary();else _renderIntTable();
 }
 function _renderIntKPI(){
   const days=_intGetData();
