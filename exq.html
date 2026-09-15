@@ -110,7 +110,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 @media(min-width:700px){
   #app{flex-direction:row;overflow:hidden;}
 
-  /* Sidebar */
+I'm assuming the patch ma control by in dag in a space. So you access it for me now, on the city in a discussion, is this in shirt or shopping about speakers and elements first release for another motofoil took from Barraps to women if you said mila such by your sherpock productive I mean they are keeping very I placed gentleman sorry deployment so you know dimension a functional and playbook dashboard for approval to maybe look in sixty five approval endorsement independent endorsement dealing both another independent and principal independent by my call later integration in terms of the planmortal ps and finalize the way forward mindas like more than three knagins apart simple prices
   .bottom-nav{
     order:-1;                          /* visually first = left */
     width:196px;height:100dvh;
@@ -773,6 +773,54 @@ input[type=file]{display:none;}
 .cpt-footer{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--card2);border-top:2px solid var(--border);}
 .cpt-footer-lbl{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--dim);}
 .cpt-footer-amt{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:800;color:var(--text);}
+
+/* ── INTEREST TRACKER ────────────────────────── */
+.int-kpi-strip{display:flex;align-items:stretch;margin:0 16px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.int-view-tabs{display:flex;gap:6px;padding:0 16px 8px;overflow-x:auto;scrollbar-width:none;}
+.int-view-tabs::-webkit-scrollbar{display:none;}
+.int-view-tab{flex-shrink:0;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
+.int-view-tab.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-soft);}
+.int-tbl-wrap{margin:0 16px 16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;}
+.int-tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
+.int-tbl thead tr{position:sticky;top:0;z-index:2;}
+.int-tbl th{background:var(--card2);color:var(--muted);font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;padding:9px 10px;text-align:right;border-bottom:2px solid var(--border);white-space:nowrap;user-select:none;}
+.int-tbl th.day-col{text-align:center;width:36px;padding:9px 6px;}
+.int-tbl td{padding:0;border-bottom:1px solid var(--border);vertical-align:middle;}
+.int-tbl tbody tr:last-child td{border-bottom:none;}
+.int-tbl tbody tr.int-today td{background:var(--accent-soft);}
+.int-tbl tbody tr{cursor:pointer;transition:background .1s;}
+.int-tbl tbody tr:hover td,.int-tbl tbody tr:active td{background:rgba(6,182,212,.04);}
+.day-num{display:flex;align-items:center;justify-content:center;padding:8px 6px;font-size:13px;font-weight:700;color:var(--muted);min-width:36px;}
+.int-tbl tbody tr.int-today .day-num{color:var(--accent);font-weight:900;}
+.int-cell{display:flex;align-items:center;justify-content:flex-end;padding:8px 10px;font-size:13px;font-family:'JetBrains Mono',monospace;font-weight:600;color:var(--muted);min-width:78px;}
+.int-cell.has-val{color:var(--text);}
+.int-cell.int-total{color:var(--green);font-weight:700;}
+.int-cell.int-future{color:var(--border2);}
+.int-tbl tfoot td{background:var(--card2);border-top:2px solid var(--border);}
+.int-tfoot-lbl{display:flex;align-items:center;justify-content:center;padding:9px 6px;font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);}
+.int-tfoot-val{display:flex;align-items:center;justify-content:flex-end;padding:9px 10px;font-size:13px;font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--green);}
+.int-sum-card{margin:0 16px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;}
+.int-sum-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--muted);margin-bottom:12px;}
+.int-sum-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);}
+.int-sum-row:last-child{border-bottom:none;}
+.int-sum-acc{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--text2);}
+.int-sum-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.int-sum-amt{font-size:14px;font-weight:800;font-family:'JetBrains Mono',monospace;}
+.int-sum-grand{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:2px solid var(--border2);}
+.int-sum-grand-lbl{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);}
+.int-sum-grand-amt{font-size:20px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--green);}
+.int-add-acc-btn{display:flex;align-items:center;gap:10px;margin:8px 16px;padding:13px 14px;background:var(--card);border:1px dashed var(--border2);border-radius:var(--radius-sm);color:var(--accent);font-size:14px;font-weight:700;cursor:pointer;transition:background .15s;font-family:'Inter',sans-serif;width:calc(100% - 32px);}
+.int-add-acc-btn:hover{background:var(--accent-soft);}
+.int-day-input{width:110px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);font-size:14px;font-family:'JetBrains Mono',monospace;font-weight:600;outline:none;text-align:right;transition:border-color .15s;}
+.int-day-input:focus{border-color:var(--accent);}
+
+/* ── ACCORDION ───────────────────────────────── */
+.acc-hdr{cursor:pointer;user-select:none;-webkit-user-select:none;}
+.acc-hdr-left{display:flex;align-items:center;gap:6px;flex:1;min-width:0;}
+.acc-chevron{flex-shrink:0;color:var(--muted);transition:transform .2s;transform:rotate(-90deg);}
+.acc-body{overflow:hidden;max-height:2000px;transition:max-height .28s ease;}
+.acc-body.closed{max-height:0;}
 </style>
 </head>
 <body>
@@ -934,18 +982,38 @@ input[type=file]{display:none;}
       <div id="summaryContent"></div>
     </div>
 
+    <!-- INTEREST TRACKER -->
+    <div class="screen" id="screen-interest">
+      <div class="month-nav">
+        <button class="nav-arr" onclick="intShiftMonth(-1)">‹</button>
+        <div style="flex:1;text-align:center;font-size:15px;font-weight:800;letter-spacing:-.3px;" id="intMonthLabel">—</div>
+        <button class="nav-arr" onclick="intShiftMonth(1)">›</button>
+      </div>
+      <div class="int-view-tabs">
+        <button class="int-view-tab active" onclick="setIntView('daily',this)">Daily</button>
+        <button class="int-view-tab" onclick="setIntView('summary',this)">Summary</button>
+      </div>
+      <div class="int-kpi-strip" id="intKpiStrip"></div>
+      <div id="intDailyView">
+        <div class="int-tbl-wrap">
+          <div class="int-tbl-scroll">
+            <table class="int-tbl" id="intTable"></table>
+          </div>
+        </div>
+      </div>
+      <div id="intSumView" style="display:none">
+        <div class="int-sum-card" id="intSumCard"></div>
+      </div>
+    </div>
+
     <!-- SETTINGS -->
     <div class="screen" id="screen-data">
       <div class="screen-header" style="padding-bottom:4px">
         <div class="screen-title">More</div>
       </div>
       <div class="settings-section-title">Cloud Sync</div>
-      <div class="data-actions" style="margin:0 16px 14px;">
-        <div class="data-btn" id="fbSyncRow" onclick="fbToggleAuth()">
-          <div class="data-btn-icon" id="fbSyncIcon" style="background:var(--accent-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
-          <div class="data-btn-info"><div class="data-btn-title" id="fbSyncTitle">Sign In to Sync</div><div class="data-btn-desc" id="fbSyncDesc">Backup and sync data across devices</div></div>
-          <div class="data-btn-arrow">›</div>
-        </div>
+      <div style="margin:0 16px 14px;">
+        <div id="fbInlinePanel" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;"></div>
       </div>
 
       <div id="backupBanner" style="display:none;align-items:center;gap:10px;margin:0 16px 14px;background:rgba(251,146,60,.12);border:1px solid rgba(251,146,60,.3);border-radius:var(--radius-sm);padding:12px 14px;">
@@ -986,12 +1054,29 @@ input[type=file]{display:none;}
           <div class="data-btn-arrow">›</div>
         </div>
       </div>
+      <!-- Interest Accounts -->
+      <div class="crl-section-hdr acc-hdr" onclick="toggleAcc('intAcc',event)">
+        <div class="acc-hdr-left">
+          <svg id="intAcc-chevron" class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="settings-section-title" style="padding:0">Interest Accounts</span>
+        </div>
+        <button class="crl-add-btn" onclick="openIntAccSheet(null)">+ Add</button>
+      </div>
+      <div id="intAcc-body" class="acc-body closed">
+        <div id="intAccList" class="crl-wrap" style="margin:0 16px 8px"></div>
+      </div>
+
       <!-- Category management -->
-      <div class="crl-section-hdr">
-        <span class="settings-section-title" style="padding:0">Categories</span>
+      <div class="crl-section-hdr acc-hdr" onclick="toggleAcc('cat',event)">
+        <div class="acc-hdr-left">
+          <svg id="cat-chevron" class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="settings-section-title" style="padding:0">Categories</span>
+        </div>
         <button class="crl-add-btn" onclick="openCatSheet(null)">+ Add</button>
       </div>
-      <div id="catList" class="crl-wrap"></div>
+      <div id="cat-body" class="acc-body closed">
+        <div id="catList" class="crl-wrap"></div>
+      </div>
 
 
       <!-- Stats row -->
@@ -1045,6 +1130,10 @@ input[type=file]{display:none;}
     <button class="nav-item" data-screen="summary" onclick="switchTab('summary')">
       <div class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
       <div class="nav-label">Trends</div>
+    </button>
+    <button class="nav-item" data-screen="interest" onclick="switchTab('interest')">
+      <div class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+      <div class="nav-label">Interest</div>
     </button>
     <button class="nav-item" data-screen="data" onclick="switchTab('data')">
       <div class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
@@ -1294,6 +1383,38 @@ input[type=file]{display:none;}
     </div>
   </div>
 
+  <!-- ── INTEREST: Day Entry Sheet ── -->
+  <div class="sheet-backdrop" id="intDaySheet">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <h3 id="intDaySheetTitle">Day — Interest</h3>
+      <p style="font-size:12px;color:var(--dim);margin:-8px 0 14px">Enter interest received per account</p>
+      <div id="intDayInputRows"></div>
+      <div class="sheet-actions" style="margin-top:8px">
+        <button class="btn-full btn-cancel" onclick="closeSheet('intDaySheet')">Cancel</button>
+        <button class="btn-full btn-confirm" onclick="saveIntDayInterest()">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INTEREST: Account Sheet ── -->
+  <div class="sheet-backdrop" id="intAccSheet">
+    <div class="sheet">
+      <div class="sheet-handle"></div>
+      <h3 id="intAccSheetTitle">Add Account</h3>
+      <div class="field"><label>Account Name</label><input id="intAccName" type="text" placeholder="e.g. Maya Boosted"/></div>
+      <div class="field">
+        <label>Color</label>
+        <div class="cat-color-grid" id="intAccColorGrid"></div>
+      </div>
+      <div class="sheet-actions" style="margin-top:8px">
+        <button class="btn-full btn-cancel" onclick="closeSheet('intAccSheet')">Cancel</button>
+        <button class="btn-full btn-confirm" onclick="saveIntAcc()">Save</button>
+      </div>
+      <button class="btn-full btn-delete-item" id="intAccDeleteBtn" onclick="deleteIntAcc()" style="display:none">Delete Account</button>
+    </div>
+  </div>
+
   <div id="toast"></div>
 </div><!-- /app -->
 
@@ -1454,6 +1575,17 @@ function getIconBg(nameOrItem){
 let data={},curYear=null,curMonthIdx=null,editingItemIdx=null,activeScreen='overview';
 let copySourceYear=null,copySourceIdx=null;
 let activeMonthYear=null;
+
+/* ── INTEREST STATE ───────────────────────── */
+const INT_PALETTE=['#6366f1','#4ade80','#fb923c','#f87171','#60a5fa','#a78bfa','#34d399','#fbbf24','#f472b6','#67e8f9'];
+let interestData=loadInterestData();
+let interestAccounts=loadInterestAccounts();
+let intYear=null,intMonthIdx=null;
+let _intEditDay=null,_intEditAccIdx=null,_intSelColor='#6366f1';
+function loadInterestData(){try{const s=localStorage.getItem('jetiq_interest_data');if(s)return JSON.parse(s);}catch(e){}return{};}
+function loadInterestAccounts(){try{const s=localStorage.getItem('jetiq_interest_accounts');if(s){const p=JSON.parse(s);if(Array.isArray(p)&&p.length)return p;}}catch(e){}return[{name:'NetBoosted',color:'#6366f1'},{name:'NetBase',color:'#4ade80'}];}
+function saveInterestData(){try{localStorage.setItem('jetiq_interest_data',JSON.stringify(interestData));}catch(e){}if(!_fbSyncing)_debouncedFbSave();}
+function saveInterestAccounts(){try{localStorage.setItem('jetiq_interest_accounts',JSON.stringify(interestAccounts));}catch(e){}if(!_fbSyncing)_debouncedFbSave();}
 const CHART_COLORS=['#06b6d4','#4ade80','#fb923c','#f87171','#818cf8','#34d3e3','#f9a8d4','#86efac','#fcd34d','#fb923c','#c084fc','#67e8f9'];
 
 /* ── UTILS ────────────────────────────────── */
@@ -1526,6 +1658,196 @@ document.querySelectorAll('.sheet-backdrop').forEach(b=>{
 });
 
 /* ── NAV ──────────────────────────────────── */
+/* ── ACCORDION ────────────────────────────── */
+function toggleAcc(id,e){
+  if(e?.target?.closest('.crl-add-btn'))return;
+  const body=document.getElementById(id+'-body');
+  const chevron=document.getElementById(id+'-chevron');
+  const closed=body.classList.toggle('closed');
+  chevron.style.transform=closed?'rotate(-90deg)':'rotate(0deg)';
+}
+
+/* ── INTEREST TRACKER ─────────────────────── */
+function _intDaysInMonth(y,mi){return new Date(y,mi+1,0).getDate();}
+function _intMonthName(){return MONTHS[intMonthIdx];}
+function _intGetData(){return interestData?.[intYear]?.[_intMonthName()]||{};}
+function _intFmt(v){return parseFloat(v).toFixed(2);}
+function _intFmtBig(v){return parseFloat(v||0).toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function _intInitMonth(){const t=new Date();intYear=t.getFullYear();intMonthIdx=t.getMonth();}
+function intShiftMonth(dir){
+  intMonthIdx+=dir;
+  if(intMonthIdx<0){intMonthIdx=11;intYear--;}
+  if(intMonthIdx>11){intMonthIdx=0;intYear++;}
+  renderInterestScreen();
+}
+function setIntView(v,btn){
+  document.querySelectorAll('.int-view-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('intDailyView').style.display=v==='daily'?'':'none';
+  document.getElementById('intSumView').style.display=v==='summary'?'':'none';
+  if(v==='summary')_renderIntSummary();
+}
+function renderInterestScreen(){
+  if(intYear===null)_intInitMonth();
+  document.getElementById('intMonthLabel').textContent=_intMonthName()+' '+intYear;
+  _renderIntKPI();
+  _renderIntTable();
+}
+function _renderIntKPI(){
+  const days=_intGetData();
+  const totals=interestAccounts.map((_,ai)=>Object.values(days).reduce((s,d)=>s+(d[ai]||0),0));
+  const grand=totals.reduce((s,v)=>s+v,0);
+  let html=interestAccounts.map((a,i)=>`
+    <div class="kpi-tile">
+      <div class="kpi-label"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${a.color};vertical-align:middle;margin-right:3px;"></span>${esc(a.name)}</div>
+      <div class="kpi-val" style="color:${a.color}">₱${_intFmtBig(totals[i])}</div>
+    </div>`).join('');
+  html+=`<div class="kpi-tile"><div class="kpi-label">Total</div><div class="kpi-val" style="color:var(--green)">₱${_intFmtBig(grand)}</div></div>`;
+  document.getElementById('intKpiStrip').innerHTML=html;
+}
+function _renderIntTable(){
+  const totalDays=_intDaysInMonth(intYear,intMonthIdx);
+  const days=_intGetData();
+  const today=new Date();
+  const isCur=today.getFullYear()===intYear&&today.getMonth()===intMonthIdx;
+  const todayDay=today.getDate();
+  const thead=`<thead><tr><th class="day-col">Day</th>${interestAccounts.map(a=>
+    `<th><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${a.color};vertical-align:middle;margin-right:4px;"></span>${esc(a.name)}</th>`
+  ).join('')}<th>Total</th></tr></thead>`;
+  const colTotals=interestAccounts.map(()=>0);
+  let grandTotal=0,rows='';
+  for(let d=1;d<=totalDays;d++){
+    const dayData=days[d]||{};
+    const isFuture=isCur&&d>todayDay;
+    const isToday=isCur&&d===todayDay;
+    const rowTotal=interestAccounts.reduce((s,_,i)=>s+(dayData[i]||0),0);
+    interestAccounts.forEach((_,i)=>{colTotals[i]+=(dayData[i]||0);});
+    grandTotal+=rowTotal;
+    rows+=`<tr class="${isToday?'int-today':''}" onclick="${isFuture?'':  `openIntDaySheet(${d})`}">
+      <td><div class="day-num">${d}</div></td>
+      ${interestAccounts.map((a,i)=>{
+        const v=dayData[i];
+        if(isFuture)return`<td><div class="int-cell int-future">—</div></td>`;
+        return`<td><div class="int-cell${v!=null?' has-val':''}"${v!=null?` style="color:${a.color}"`:''  }>${v!=null?_intFmt(v):'—'}</div></td>`;
+      }).join('')}
+      <td><div class="int-cell${rowTotal>0?' int-total':' int-future'}">${rowTotal>0?_intFmt(rowTotal):'—'}</div></td>
+    </tr>`;
+  }
+  const tfoot=`<tfoot><tr><td><div class="int-tfoot-lbl">TOT</div></td>${interestAccounts.map((a,i)=>
+    `<td><div class="int-tfoot-val" style="color:${a.color}">₱${_intFmtBig(colTotals[i])}</div></td>`
+  ).join('')}<td><div class="int-tfoot-val">₱${_intFmtBig(grandTotal)}</div></td></tr></tfoot>`;
+  document.getElementById('intTable').innerHTML=thead+`<tbody>${rows}</tbody>`+tfoot;
+}
+function _renderIntSummary(){
+  const days=_intGetData();
+  const totals=interestAccounts.map((_,ai)=>Object.values(days).reduce((s,d)=>s+(d[ai]||0),0));
+  const grand=totals.reduce((s,v)=>s+v,0);
+  const enteredDays=Object.keys(days).length;
+  const totalDays=_intDaysInMonth(intYear,intMonthIdx);
+  document.getElementById('intSumCard').innerHTML=`
+    <div class="int-sum-title">${esc(_intMonthName())} ${intYear} · ${enteredDays}/${totalDays} days</div>
+    ${interestAccounts.map((a,i)=>`
+      <div class="int-sum-row">
+        <div class="int-sum-acc"><div class="int-sum-dot" style="background:${a.color}"></div>${esc(a.name)}</div>
+        <div class="int-sum-amt" style="color:${a.color}">₱${_intFmtBig(totals[i])}</div>
+      </div>`).join('')}
+    <div class="int-sum-grand">
+      <div class="int-sum-grand-lbl">Grand Total</div>
+      <div class="int-sum-grand-amt">₱${_intFmtBig(grand)}</div>
+    </div>`;
+}
+function openIntDaySheet(day){
+  _intEditDay=day;
+  const dayData=(_intGetData()[day])||{};
+  document.getElementById('intDaySheetTitle').textContent=`Day ${day} — ${_intMonthName()} ${intYear}`;
+  document.getElementById('intDayInputRows').innerHTML=interestAccounts.map((a,i)=>`
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 14px;">
+      <div style="flex:1;">
+        <div style="font-size:14px;font-weight:700;display:flex;align-items:center;gap:6px;">
+          <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${a.color};flex-shrink:0;"></span>${esc(a.name)}
+        </div>
+        <div style="font-size:10px;color:var(--muted);margin-top:2px;">Daily interest (₱)</div>
+      </div>
+      <input id="intDayInput_${i}" type="number" step="0.01" min="0" placeholder="0.00" class="int-day-input"
+        value="${dayData[i]!=null?dayData[i]:''}"
+        onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'">
+    </div>`).join('');
+  openSheet('intDaySheet');
+  setTimeout(()=>document.getElementById('intDayInput_0')?.focus(),300);
+}
+function saveIntDayInterest(){
+  const mn=_intMonthName();
+  if(!interestData[intYear])interestData[intYear]={};
+  if(!interestData[intYear][mn])interestData[intYear][mn]={};
+  const entry={};let hasVal=false;
+  interestAccounts.forEach((_,i)=>{
+    const v=parseFloat(document.getElementById('intDayInput_'+i)?.value||'');
+    if(!isNaN(v)&&v>0){entry[i]=Math.round(v*100)/100;hasVal=true;}
+  });
+  if(hasVal){interestData[intYear][mn][_intEditDay]=entry;}
+  else{delete interestData[intYear][mn][_intEditDay];}
+  saveInterestData();
+  closeSheet('intDaySheet');
+  renderInterestScreen();
+}
+function renderIntAccounts(){
+  const el=document.getElementById('intAccList');
+  if(!el)return;
+  el.innerHTML=interestAccounts.map((a,i)=>`
+    <div class="crl-row" onclick="openIntAccSheet(${i})">
+      <div class="crl-icon" style="background:${a.color}22">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="${a.color}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </div>
+      <span class="crl-name">${esc(a.name)}</span>
+      <svg class="crl-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </div>`).join('')||'<div class="crl-row" style="color:var(--muted);font-size:13px;cursor:default;">No accounts yet — add one below</div>';
+}
+function _renderIntColorGrid(sel){
+  document.getElementById('intAccColorGrid').innerHTML=INT_PALETTE.map(c=>
+    `<div class="cat-color-swatch${c===sel?' selected':''}" style="background:${c}" onclick="intSelectColor('${c}')"></div>`
+  ).join('');
+  _intSelColor=sel;
+}
+function intSelectColor(c){
+  _intSelColor=c;
+  document.querySelectorAll('#intAccColorGrid .cat-color-swatch').forEach(s=>s.classList.toggle('selected',s.style.background===c));
+}
+function openIntAccSheet(idx){
+  _intEditAccIdx=idx;
+  if(idx===null){
+    document.getElementById('intAccSheetTitle').textContent='Add Account';
+    document.getElementById('intAccName').value='';
+    document.getElementById('intAccDeleteBtn').style.display='none';
+    _renderIntColorGrid(INT_PALETTE[interestAccounts.length%INT_PALETTE.length]);
+  }else{
+    const a=interestAccounts[idx];
+    document.getElementById('intAccSheetTitle').textContent='Edit Account';
+    document.getElementById('intAccName').value=a.name;
+    document.getElementById('intAccDeleteBtn').style.display='block';
+    _renderIntColorGrid(a.color);
+  }
+  openSheet('intAccSheet');
+  setTimeout(()=>document.getElementById('intAccName')?.focus(),300);
+}
+function saveIntAcc(){
+  const name=document.getElementById('intAccName').value.trim();
+  if(!name){toast('Enter an account name','err');return;}
+  if(_intEditAccIdx===null){interestAccounts.push({name,color:_intSelColor});}
+  else{interestAccounts[_intEditAccIdx]={name,color:_intSelColor};}
+  saveInterestAccounts();
+  closeSheet('intAccSheet');
+  renderIntAccounts();
+  if(activeScreen==='interest')renderInterestScreen();
+}
+function deleteIntAcc(){
+  if(_intEditAccIdx===null)return;
+  interestAccounts.splice(_intEditAccIdx,1);
+  saveInterestAccounts();
+  closeSheet('intAccSheet');
+  renderIntAccounts();
+  if(activeScreen==='interest')renderInterestScreen();
+}
+
 function switchTab(name,resetToSys=false){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.toggle('active',n.dataset.screen===name));
@@ -1542,7 +1864,8 @@ function switchTab(name,resetToSys=false){
   }
   if(name==='months')renderMonths();
   if(name==='summary')renderSummary();
-  if(name==='data'){renderDataScreen();checkBackupReminder();renderCatList();}
+  if(name==='interest')renderInterestScreen();
+  if(name==='data'){renderDataScreen();checkBackupReminder();renderCatList();renderIntAccounts();}
 }
 
 function selectYearMonth(year,idx){curYear=year;curMonthIdx=idx;saveCurrentPos();updateHeaderSub();if(activeScreen==='overview')renderOverview();}
@@ -3549,22 +3872,46 @@ function _debouncedFbSave(){
   },2000);
 }
 const _CLOUD_SVG=`<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>`;
+const _GOOGLE_SVG=`<svg width="17" height="17" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>`;
 function _fbUpdateAuthUI(user){
-  const icon=document.getElementById('fbSyncIcon');
-  const title=document.getElementById('fbSyncTitle');
-  const desc=document.getElementById('fbSyncDesc');
-  if(!icon)return;
+  const panel=document.getElementById('fbInlinePanel');
+  if(!panel)return;
   if(user){
     const initial=(user.email||'?').charAt(0).toUpperCase();
-    icon.innerHTML=`<div style="width:22px;height:22px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;">${initial}</div>`;
-    icon.style.background='var(--green-soft)';
-    if(title){title.textContent=user.email||'Signed In';title.style.color='var(--green)';}
-    if(desc)desc.textContent='● Connected — tap to push / pull / sign out';
+    panel.innerHTML=`
+      <div style="display:flex;align-items:center;gap:12px;padding:14px;border-bottom:1px solid var(--border);">
+        <div style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:var(--accent);flex-shrink:0;">${esc(initial)}</div>
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:13px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(user.email||'Signed In')}</div>
+          <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:2px;">● Connected</div>
+          <div style="font-size:10px;color:var(--dim);margin-top:3px;">Last sync: <span id="syncAgeLabel">${_fmtPHT(_lastSyncTime)}</span></div>
+          <div style="font-size:10px;color:var(--dim);margin-top:1px;">Last backup: <span id="backupAgeLabel">${_fmtPHT(_lastBackupTime)}</span></div>
+        </div>
+      </div>
+      <div style="display:flex;border-bottom:1px solid var(--border);">
+        <button id="syncPushBtn" onclick="fbManualPush()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:12px 10px;background:none;border:none;color:var(--accent);font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .12s;" onmouseover="this.style.background='var(--accent-soft)'" onmouseout="this.style.background='none'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/><path d="M5 21h14"/></svg>Push
+        </button>
+        <div style="width:1px;background:var(--border);"></div>
+        <button id="syncPullBtn" onclick="fbManualPull()" style="flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:12px 10px;background:none;border:none;color:var(--accent);font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .12s;" onmouseover="this.style.background='var(--accent-soft)'" onmouseout="this.style.background='none'">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 16 12 21 17 16"/><line x1="12" y1="21" x2="12" y2="9"/><path d="M5 3h14"/></svg>Pull
+        </button>
+      </div>
+      <button onclick="fbInlineSignOut()" style="width:100%;padding:11px;background:none;border:none;color:var(--red);font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .12s;" onmouseover="this.style.background='var(--red-soft)'" onmouseout="this.style.background='none'">Sign Out</button>`;
   }else{
-    icon.innerHTML=`<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>`;
-    icon.style.background='var(--accent-soft)';
-    if(title){title.textContent='Sign In to Sync';title.style.color='';}
-    if(desc)desc.textContent='Backup and sync data across devices';
+    panel.innerHTML=`
+      <div style="padding:14px 14px 10px;">
+        <button onclick="fbSignInGoogle()" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;padding:11px;border-radius:9px;border:1px solid var(--border2);background:var(--card2);color:var(--text);font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .12s;margin-bottom:12px;" onmouseover="this.style.background='var(--card3)'" onmouseout="this.style.background='var(--card2)'">${_GOOGLE_SVG} Continue with Google</button>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;"><div style="flex:1;height:1px;background:var(--border);"></div><span style="font-size:10px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.6px;">or</span><div style="flex:1;height:1px;background:var(--border);"></div></div>
+        <div style="font-size:11px;color:var(--dim);margin-bottom:8px;">Sign in with a magic link — no password needed</div>
+        <div style="display:flex;gap:8px;">
+          <input id="sync-email" type="email" placeholder="your@email.com" inputmode="email" autocomplete="email"
+            style="flex:1;background:var(--card2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;color:var(--text);font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border-color .15s;"
+            onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'"
+            onkeydown="if(event.key==='Enter')fbSendMagicLink()"/>
+          <button id="syncSendBtn" onclick="fbSendMagicLink()" style="padding:10px 14px;border-radius:9px;background:var(--accent);color:#000;font-size:13px;font-weight:800;cursor:pointer;border:none;font-family:'Inter',sans-serif;white-space:nowrap;">Send →</button>
+        </div>
+      </div>`;
   }
 }
 window._fbUpdateAuthUI=_fbUpdateAuthUI;
@@ -3580,9 +3927,12 @@ window._fbLoadCloud=async function(){
     return;
   }
   // Cloud has data — it is always the source of truth on pull
-  const{fbData,fbCategories,fbSettings}=result;
+  const{fbData,fbCategories,fbSettings,fbInterestData}=result;
   if(fbSettings?.lastSyncedAt){_lastSyncTime=new Date(fbSettings.lastSyncedAt);try{localStorage.setItem('jetiq_last_fb_sync',_lastSyncTime.toISOString());}catch(e){}}
   if(fbSettings?.lastBackupAt){_lastBackupTime=new Date(fbSettings.lastBackupAt);try{localStorage.setItem('jetiq_last_backup',_lastBackupTime.toISOString());}catch(e){}}
+  if(fbSettings?.interestAccounts&&Array.isArray(fbSettings.interestAccounts)&&fbSettings.interestAccounts.length){interestAccounts=fbSettings.interestAccounts;saveInterestAccounts();}
+  if(fbInterestData&&Object.keys(fbInterestData).length){interestData=fbInterestData;saveInterestData();}
+  if(activeScreen==='interest')renderInterestScreen();
   _fbSyncing=true;
   try{
     if(fbData&&typeof fbData==='object'&&Object.keys(fbData).length){
@@ -3603,43 +3953,10 @@ window._fbLoadCloud=async function(){
   }finally{_fbSyncing=false;}
   toast('Synced ✓');
 };
-function fbToggleAuth(){
-  if(window._fbCurrentUser){_fbOpenSyncPanel();}
-  else{
-    document.getElementById('syncSheetBody').innerHTML=`<h3>Sync with Cloud</h3><button onclick="fbSignInGoogle()" style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;border-radius:12px;border:1px solid var(--border2);background:var(--card2);color:var(--text);font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;margin-bottom:16px;transition:background .15s;" onmouseover="this.style.background='var(--card3)'" onmouseout="this.style.background='var(--card2)'"><svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Continue with Google</button><div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;"><div style="flex:1;height:1px;background:var(--border);"></div><span style="font-size:11px;color:var(--muted);font-weight:700;">or</span><div style="flex:1;height:1px;background:var(--border);"></div></div><p style="font-size:13px;color:var(--dim);margin-bottom:10px;line-height:1.5">Sign in with a one-time email link. No password needed.</p><div class="field"><label>Email</label><input id="sync-email" type="email" placeholder="you@example.com" inputmode="email" autocomplete="email"/></div><div class="sheet-actions"><button class="btn-full btn-cancel" onclick="closeSheet('syncSheet')">Cancel</button><button class="btn-full btn-confirm" id="syncSendBtn" onclick="fbSendMagicLink()">Send Link →</button></div>`;
-    openSheet('syncSheet');
-    setTimeout(()=>document.getElementById('sync-email')?.focus(),300);
-  }
-}
-function _fbOpenSyncPanel(){
-  const u=window._fbCurrentUser;
-  const email=u?.email||'';
-  const initial=(email.charAt(0)||'?').toUpperCase();
-  document.getElementById('syncSheetBody').innerHTML=`
-    <h3>Cloud Sync</h3>
-    <div style="display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--green-soft);border:1px solid rgba(74,222,128,.3);border-radius:10px;margin-bottom:14px;">
-      <div style="width:38px;height:38px;border-radius:50%;background:var(--accent-soft);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:var(--accent);flex-shrink:0;">${esc(initial)}</div>
-      <div style="flex:1;min-width:0;">
-        <div style="font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(email)}</div>
-        <div style="font-size:11px;color:var(--green);font-weight:600;margin-top:2px;">● Connected</div>
-        <div style="font-size:10px;color:var(--dim);margin-top:3px;">Last sync: <span id="syncAgeLabel">${_fmtPHT(_lastSyncTime)}</span></div>
-        <div style="font-size:10px;color:var(--dim);margin-top:1px;">Last backup: <span id="backupAgeLabel">${_fmtPHT(_lastBackupTime)}</span></div>
-      </div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;">
-      <button id="syncPushBtn" class="btn-full btn-confirm" onclick="fbManualPush()" style="display:flex;align-items:center;justify-content:center;gap:8px;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/><path d="M5 21h14"/></svg>
-        Push to Cloud
-      </button>
-      <button id="syncPullBtn" class="btn-full btn-cancel" onclick="fbManualPull()" style="display:flex;align-items:center;justify-content:center;gap:8px;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 16 12 21 17 16"/><line x1="12" y1="21" x2="12" y2="9"/><path d="M5 3h14"/></svg>
-        Pull from Cloud
-      </button>
-    </div>
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;"><div style="flex:1;height:1px;background:var(--border);"></div><div style="font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);">Account</div><div style="flex:1;height:1px;background:var(--border);"></div></div>
-    <button class="btn-full" style="background:transparent;border:1px solid var(--red);color:var(--red);padding:12px;border-radius:12px;font-size:14px;font-weight:700;" onclick="fbPanelSignOut()">Sign Out</button>`;
-  openSheet('syncSheet');
-}
+function fbToggleAuth(){switchTab('data');}
+function _fbOpenSyncPanel(){/* replaced by inline panel */}
+const _PUSH_SVG=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/><path d="M5 21h14"/></svg>`;
+const _PULL_SVG=`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 16 12 21 17 16"/><line x1="12" y1="21" x2="12" y2="9"/><path d="M5 3h14"/></svg>`;
 async function fbManualPush(){
   if(!window._fbCurrentUser){toast('Not signed in','err');return;}
   const btn=document.getElementById('syncPushBtn');
@@ -3652,7 +3969,7 @@ async function fbManualPush(){
     if(lbl)lbl.textContent=_fmtPHT(_lastSyncTime);
     toast('Pushed to cloud ✓');
   }catch(e){toast('Push failed','err');}
-  if(btn){btn.innerHTML=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/><path d="M5 21h14"/></svg> Push to Cloud`;btn.disabled=false;}
+  if(btn){btn.innerHTML=`${_PUSH_SVG}Push`;btn.disabled=false;}
 }
 async function fbManualPull(){
   if(!window._fbCurrentUser){toast('Not signed in','err');return;}
@@ -3661,12 +3978,12 @@ async function fbManualPull(){
   try{
     await window._fbLoadCloud();
   }catch(e){toast('Pull failed','err');}
-  if(btn){btn.innerHTML=`<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="7 16 12 21 17 16"/><line x1="12" y1="21" x2="12" y2="9"/><path d="M5 3h14"/></svg> Pull from Cloud`;btn.disabled=false;}
+  if(btn){btn.innerHTML=`${_PULL_SVG}Pull`;btn.disabled=false;}
 }
-function fbPanelSignOut(){
-  closeSheet('syncSheet');
+function fbInlineSignOut(){
   if(window._fbSignOut)window._fbSignOut();
 }
+function fbPanelSignOut(){fbInlineSignOut();}
 async function fbSendMagicLink(){
   const email=(document.getElementById('sync-email')?.value||'').trim();
   if(!email||!email.includes('@')){toast('Enter a valid email','err');return;}
@@ -3675,13 +3992,18 @@ async function fbSendMagicLink(){
   if(window._fbSendLink){
     const ok=await window._fbSendLink(email);
     if(ok){
-      document.getElementById('syncSheetBody').innerHTML=`<div style="text-align:center;padding:8px 0 4px;"><div style="font-size:42px;margin-bottom:14px;">📧</div><div style="font-size:17px;font-weight:800;margin-bottom:8px;letter-spacing:-.3px;">Check your email</div><div style="font-size:13px;color:var(--dim);line-height:1.6;margin-bottom:20px;">A sign-in link was sent to<br><strong style="color:var(--text)">${esc(email)}</strong><br><br>Tap the link to sign in. Expires in 1 hour.</div><button class="btn-full btn-cancel" onclick="closeSheet('syncSheet')">Close</button></div>`;
+      const panel=document.getElementById('fbInlinePanel');
+      if(panel)panel.innerHTML=`<div style="padding:20px 16px;text-align:center;">
+        <div style="font-size:36px;margin-bottom:10px;">📧</div>
+        <div style="font-size:15px;font-weight:800;margin-bottom:6px;">Check your email</div>
+        <div style="font-size:12px;color:var(--dim);line-height:1.6;">Link sent to <strong style="color:var(--text)">${esc(email)}</strong>.<br>Tap the link to sign in. Expires in 1 hour.</div>
+      </div>`;
     }else{
-      if(btn){btn.textContent='Send Link →';btn.disabled=false;}
+      if(btn){btn.textContent='Send →';btn.disabled=false;}
     }
   }else{
     toast('Supabase not configured','err');
-    if(btn){btn.textContent='Send Link →';btn.disabled=false;}
+    if(btn){btn.textContent='Send →';btn.disabled=false;}
   }
 }
 
@@ -3967,8 +4289,19 @@ if (_SB_URL === 'YOUR_SUPABASE_URL') {
       const toDelCats = (cloudCats || []).filter(c => !localCatNames.has(c.name));
       if (toDelCats.length) await _sb.from('exq_categories').delete().in('id', toDelCats.map(c => c.id));
 
+      // Interest data
+      const intRows=[];
+      for(const[year,months]of Object.entries(interestData)){
+        for(const[month,dayData]of Object.entries(months)){
+          if(Object.keys(dayData).length)intRows.push({user_id:user.id,year:String(year),month,data:dayData});
+        }
+      }
+      if(intRows.length){
+        const{error:ie}=await _sb.from('exq_interest').upsert(intRows,{onConflict:'user_id,year,month'});
+        if(ie)console.warn('[ExQ-SB] interest save error',ie);
+      }
       await _sb.from('exq_settings').upsert(
-        { user_id: user.id, last_synced_at: new Date().toISOString() },
+        { user_id: user.id, last_synced_at: new Date().toISOString(), interest_accounts: interestAccounts },
         { onConflict: 'user_id' }
       );
     } catch (e) {
@@ -3991,10 +4324,11 @@ if (_SB_URL === 'YOUR_SUPABASE_URL') {
     const { data: { user } } = await _sb.auth.getUser();
     if (!user) return null;
     try {
-      const [{ data: months, error: me }, { data: cats, error: ce }, { data: settings }] = await Promise.all([
+      const [{ data: months, error: me }, { data: cats, error: ce }, { data: settings }, { data: intRows }] = await Promise.all([
         _sb.from('exq_months').select('*'),
         _sb.from('exq_categories').select('*').order('sort_order'),
-        _sb.from('exq_settings').select('*').eq('user_id', user.id).maybeSingle()
+        _sb.from('exq_settings').select('*').eq('user_id', user.id).maybeSingle(),
+        _sb.from('exq_interest').select('*')
       ]);
       if (me) throw me;
       if (ce) throw ce;
@@ -4027,10 +4361,18 @@ if (_SB_URL === 'YOUR_SUPABASE_URL') {
 
       const fbSettings = {
         lastSyncedAt: settings?.last_synced_at || null,
-        lastBackupAt: settings?.last_backup_at || null
+        lastBackupAt: settings?.last_backup_at || null,
+        interestAccounts: settings?.interest_accounts || null
       };
 
-      return { fbData, fbCategories, fbSettings };
+      const fbInterestData = {};
+      for(const row of (intRows||[])){
+        const yk=String(row.year);
+        if(!fbInterestData[yk])fbInterestData[yk]={};
+        fbInterestData[yk][row.month]=row.data||{};
+      }
+
+      return { fbData, fbCategories, fbSettings, fbInterestData };
     } catch (e) { console.error('[ExQ-SB] load error', e); return null; }
   };
 }} // end if(createClient) + else block
