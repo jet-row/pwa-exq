@@ -774,7 +774,7 @@ input[type=file]{display:none;}
 
 /* ── INTEREST TRACKER ────────────────────────── */
 .int-kpi-strip{display:flex;align-items:stretch;margin:0 16px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
-.sum-sub-tab{flex-shrink:0;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
+.sum-sub-tab{flex-shrink:0;padding:10px 22px;border-radius:20px;font-size:16px;font-weight:700;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
 .sum-sub-tab.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-soft);}
 .int-view-tabs{display:flex;gap:6px;padding:0 16px 8px;overflow-x:auto;scrollbar-width:none;}
 .int-view-tabs::-webkit-scrollbar{display:none;}
@@ -976,12 +976,11 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 
     <!-- SUMMARY -->
     <div class="screen" id="screen-summary">
-      <div class="screen-header" style="padding-bottom:4px">
-        <div class="screen-title" id="summaryScreenTitle">Trends</div>
-      </div>
-      <div style="display:flex;gap:6px;padding:0 16px 8px;">
-        <button class="sum-sub-tab active" id="sumSubTab-trends" onclick="setSumSubTab('trends')">Trends</button>
-        <button class="sum-sub-tab" id="sumSubTab-interest" onclick="setSumSubTab('interest')">Interest</button>
+      <div class="screen-header" style="padding-bottom:8px">
+        <div style="display:flex;gap:6px;">
+          <button class="sum-sub-tab active" id="sumSubTab-trends" onclick="setSumSubTab('trends')">Trends</button>
+          <button class="sum-sub-tab" id="sumSubTab-interest" onclick="setSumSubTab('interest')">Interest</button>
+        </div>
       </div>
       <div id="sumTrendsPane">
         <div id="summaryContent"></div>
@@ -1686,7 +1685,6 @@ function setSumSubTab(name){
   document.getElementById('sumSubTab-interest').classList.toggle('active',name==='interest');
   document.getElementById('sumTrendsPane').style.display=name==='trends'?'':'none';
   document.getElementById('sumInterestPane').style.display=name==='interest'?'':'none';
-  document.getElementById('summaryScreenTitle').textContent=name==='interest'?'Interest':'Trends';
   if(name==='trends')renderSummary();
   if(name==='interest')renderInterestScreen();
 }
