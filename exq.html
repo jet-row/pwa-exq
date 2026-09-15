@@ -776,6 +776,8 @@ input[type=file]{display:none;}
 
 /* ── INTEREST TRACKER ────────────────────────── */
 .int-kpi-strip{display:flex;align-items:stretch;margin:0 16px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.sum-sub-tab{flex-shrink:0;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
+.sum-sub-tab.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-soft);}
 .int-view-tabs{display:flex;gap:6px;padding:0 16px 8px;overflow-x:auto;scrollbar-width:none;}
 .int-view-tabs::-webkit-scrollbar{display:none;}
 .int-view-tab{flex-shrink:0;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
@@ -977,32 +979,36 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
     <!-- SUMMARY -->
     <div class="screen" id="screen-summary">
       <div class="screen-header" style="padding-bottom:4px">
-        <div class="screen-title">Trends</div>
+        <div class="screen-title" id="summaryScreenTitle">Trends</div>
       </div>
-      <div id="summaryContent"></div>
-    </div>
-
-    <!-- INTEREST TRACKER -->
-    <div class="screen" id="screen-interest">
-      <div class="month-nav">
-        <button class="nav-arr" onclick="intShiftMonth(-1)">‹</button>
-        <div style="flex:1;text-align:center;font-size:15px;font-weight:800;letter-spacing:-.3px;" id="intMonthLabel">—</div>
-        <button class="nav-arr" onclick="intShiftMonth(1)">›</button>
+      <div style="display:flex;gap:6px;padding:0 16px 8px;">
+        <button class="sum-sub-tab active" id="sumSubTab-trends" onclick="setSumSubTab('trends')">Trends</button>
+        <button class="sum-sub-tab" id="sumSubTab-interest" onclick="setSumSubTab('interest')">Interest</button>
       </div>
-      <div class="int-view-tabs">
-        <button class="int-view-tab active" onclick="setIntView('daily',this)">Daily</button>
-        <button class="int-view-tab" onclick="setIntView('summary',this)">Summary</button>
+      <div id="sumTrendsPane">
+        <div id="summaryContent"></div>
       </div>
-      <div class="int-kpi-strip" id="intKpiStrip"></div>
-      <div id="intDailyView">
-        <div class="int-tbl-wrap">
-          <div class="int-tbl-scroll">
-            <table class="int-tbl" id="intTable"></table>
+      <div id="sumInterestPane" style="display:none">
+        <div class="month-nav">
+          <button class="nav-arr" onclick="intShiftMonth(-1)">‹</button>
+          <div style="flex:1;text-align:center;font-size:15px;font-weight:800;letter-spacing:-.3px;" id="intMonthLabel">—</div>
+          <button class="nav-arr" onclick="intShiftMonth(1)">›</button>
+        </div>
+        <div class="int-view-tabs">
+          <button class="int-view-tab active" onclick="setIntView('daily',this)">Daily</button>
+          <button class="int-view-tab" onclick="setIntView('summary',this)">Summary</button>
+        </div>
+        <div class="int-kpi-strip" id="intKpiStrip"></div>
+        <div id="intDailyView">
+          <div class="int-tbl-wrap">
+            <div class="int-tbl-scroll">
+              <table class="int-tbl" id="intTable"></table>
+            </div>
           </div>
         </div>
-      </div>
-      <div id="intSumView" style="display:none">
-        <div class="int-sum-card" id="intSumCard"></div>
+        <div id="intSumView" style="display:none">
+          <div class="int-sum-card" id="intSumCard"></div>
+        </div>
       </div>
     </div>
 
@@ -1130,10 +1136,6 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
     <button class="nav-item" data-screen="summary" onclick="switchTab('summary')">
       <div class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
       <div class="nav-label">Trends</div>
-    </button>
-    <button class="nav-item" data-screen="interest" onclick="switchTab('interest')">
-      <div class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-      <div class="nav-label">Interest</div>
     </button>
     <button class="nav-item" data-screen="data" onclick="switchTab('data')">
       <div class="nav-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></div>
@@ -1580,7 +1582,7 @@ let activeMonthYear=null;
 const INT_PALETTE=['#6366f1','#4ade80','#fb923c','#f87171','#60a5fa','#a78bfa','#34d399','#fbbf24','#f472b6','#67e8f9'];
 let interestData=loadInterestData();
 let interestAccounts=loadInterestAccounts();
-let intYear=null,intMonthIdx=null;
+let intYear=null,intMonthIdx=null,sumSubTab='trends';
 let _intEditDay=null,_intEditAccIdx=null,_intSelColor='#6366f1';
 function loadInterestData(){try{const s=localStorage.getItem('jetiq_interest_data');if(s)return JSON.parse(s);}catch(e){}return{};}
 function loadInterestAccounts(){try{const s=localStorage.getItem('jetiq_interest_accounts');if(s){const p=JSON.parse(s);if(Array.isArray(p)&&p.length)return p;}}catch(e){}return[{name:'NetBoosted',color:'#6366f1'},{name:'NetBase',color:'#4ade80'}];}
@@ -1679,6 +1681,16 @@ function intShiftMonth(dir){
   if(intMonthIdx<0){intMonthIdx=11;intYear--;}
   if(intMonthIdx>11){intMonthIdx=0;intYear++;}
   renderInterestScreen();
+}
+function setSumSubTab(name){
+  sumSubTab=name;
+  document.getElementById('sumSubTab-trends').classList.toggle('active',name==='trends');
+  document.getElementById('sumSubTab-interest').classList.toggle('active',name==='interest');
+  document.getElementById('sumTrendsPane').style.display=name==='trends'?'':'none';
+  document.getElementById('sumInterestPane').style.display=name==='interest'?'':'none';
+  document.getElementById('summaryScreenTitle').textContent=name==='interest'?'Interest':'Trends';
+  if(name==='trends')renderSummary();
+  if(name==='interest')renderInterestScreen();
 }
 function setIntView(v,btn){
   document.querySelectorAll('.int-view-tab').forEach(t=>t.classList.remove('active'));
@@ -1837,7 +1849,7 @@ function saveIntAcc(){
   saveInterestAccounts();
   closeSheet('intAccSheet');
   renderIntAccounts();
-  if(activeScreen==='interest')renderInterestScreen();
+  if(activeScreen==='summary'&&sumSubTab==='interest')renderInterestScreen();
 }
 function deleteIntAcc(){
   if(_intEditAccIdx===null)return;
@@ -1845,7 +1857,7 @@ function deleteIntAcc(){
   saveInterestAccounts();
   closeSheet('intAccSheet');
   renderIntAccounts();
-  if(activeScreen==='interest')renderInterestScreen();
+  if(activeScreen==='summary'&&sumSubTab==='interest')renderInterestScreen();
 }
 
 function switchTab(name,resetToSys=false){
@@ -1863,8 +1875,7 @@ function switchTab(name,resetToSys=false){
     updateMonthNav();renderOverview();
   }
   if(name==='months')renderMonths();
-  if(name==='summary')renderSummary();
-  if(name==='interest')renderInterestScreen();
+  if(name==='summary'){if(sumSubTab==='interest')renderInterestScreen();else renderSummary();}
   if(name==='data'){renderDataScreen();checkBackupReminder();renderCatList();renderIntAccounts();}
 }
 
@@ -3932,7 +3943,7 @@ window._fbLoadCloud=async function(){
   if(fbSettings?.lastBackupAt){_lastBackupTime=new Date(fbSettings.lastBackupAt);try{localStorage.setItem('jetiq_last_backup',_lastBackupTime.toISOString());}catch(e){}}
   if(fbSettings?.interestAccounts&&Array.isArray(fbSettings.interestAccounts)&&fbSettings.interestAccounts.length){interestAccounts=fbSettings.interestAccounts;saveInterestAccounts();}
   if(fbInterestData&&Object.keys(fbInterestData).length){interestData=fbInterestData;saveInterestData();}
-  if(activeScreen==='interest')renderInterestScreen();
+  if(activeScreen==='summary'&&sumSubTab==='interest')renderInterestScreen();
   _fbSyncing=true;
   try{
     if(fbData&&typeof fbData==='object'&&Object.keys(fbData).length){
