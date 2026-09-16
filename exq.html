@@ -1590,7 +1590,7 @@ const CHART_COLORS=['#06b6d4','#4ade80','#fb923c','#f87171','#818cf8','#34d3e3',
 /* ── UTILS ────────────────────────────────── */
 let amountsHidden=localStorage.getItem('jetiq_hide_amounts')==='1';
 const fmt=v=>amountsHidden?'₱ ••••':'₱'+parseFloat(v||0).toLocaleString('en-PH',{minimumFractionDigits:2,maximumFractionDigits:2});
-const fmtShort=v=>{if(amountsHidden)return'₱ ••••';const n=parseFloat(v||0);if(Math.abs(n)>=1000000)return'₱'+(n/1000000).toFixed(1)+'M';if(Math.abs(n)>=1000)return'₱'+(n/1000).toFixed(0)+'K';return fmt(v);};
+const fmtShort=v=>{if(amountsHidden)return'₱ ••••';const n=parseFloat(v||0);if(Math.abs(n)>=1000000)return'₱'+(n/1000000).toFixed(1)+'M';if(Math.abs(n)>=1000){const k=(n/1000).toFixed(1);return'₱'+(k.endsWith('.0')?k.slice(0,-2):k)+'K';}return fmt(v);};
 const fmtLgd=v=>{if(amountsHidden)return'₱ ••••';const n=parseFloat(v||0);if(Math.abs(n)>=1000)return fmtShort(v);return'₱'+Math.abs(n).toFixed(0);};
 function fmtInput(n){if(n===''||n===null||n===undefined||isNaN(+n))return'';const p=(+n).toFixed(2).split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');return p.join('.');}
 function amtFocus(el){el.value=el.value.replace(/,/g,'');}
