@@ -852,23 +852,23 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .new-hero-card{margin:4px 14px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
 .new-hero-card::before{content:'';position:absolute;top:0;right:0;width:220px;height:160px;background:radial-gradient(ellipse at top right,var(--accent-soft),transparent 70%);pointer-events:none;}
 .period-tabs{display:flex;border-bottom:1px solid var(--border);}
-.period-tab{flex:1;padding:11px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);cursor:pointer;transition:all .18s;border-right:1px solid var(--border);}
+.period-tab{flex:1;padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);cursor:pointer;transition:all .18s;border-right:1px solid var(--border);}
 .period-tab:last-child{border-right:none;}
 .period-tab.active{color:var(--accent);background:var(--accent-soft);}
 .period-tab:active{opacity:.7;}
 .period-tab-dot{width:7px;height:7px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .18s;}
 .period-tab.active .period-tab-dot{background:var(--accent);}
-.hero-body{padding:16px 18px 14px;}
-.hero-net-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px;}
-.hero-net-amount{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:900;letter-spacing:-1.5px;line-height:1;margin-bottom:14px;transition:color .2s;}
-.hero-progress-track{height:8px;border-radius:4px;overflow:hidden;background:var(--border2);display:flex;margin-bottom:6px;}
+.hero-body{padding:12px 16px 10px;}
+.hero-net-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:3px;}
+.hero-net-amount{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:900;letter-spacing:-1.5px;line-height:1;margin-bottom:10px;transition:color .2s;}
+.hero-progress-track{height:6px;border-radius:4px;overflow:hidden;background:var(--border2);display:flex;margin-bottom:4px;}
 .hero-progress-spent{height:100%;background:var(--red);opacity:.75;transition:width .5s ease;}
 .hero-progress-budget{height:100%;background:var(--amber);opacity:.8;transition:width .5s ease;}
 .hero-progress-saved{height:100%;background:var(--green);transition:width .5s ease;}
-.hero-progress-labels{display:flex;justify-content:space-between;margin-bottom:14px;}
+.hero-progress-labels{display:flex;justify-content:space-between;margin-bottom:10px;}
 .hero-progress-lbl{font-size:10px;font-weight:700;color:var(--muted);}
 .hero-progress-pct{font-size:10px;font-weight:800;color:var(--green);}
-.hero-stats{display:flex;border-top:1px solid var(--border);padding-top:12px;gap:0;}
+.hero-stats{display:flex;border-top:1px solid var(--border);padding-top:10px;gap:0;}
 .hero-stat{flex:1;text-align:center;}
 .hero-stat+.hero-stat{border-left:1px solid var(--border);}
 .hero-stat-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:4px;}
@@ -2445,7 +2445,7 @@ function renderSvList(){
           <div class="efi-icon" style="background:${c.color}22">${getCatIconSvg(c.icon||'info',c.color,16)}</div>
           <div class="efi-info">
             <div class="efi-name">${esc(it.name)}</div>
-            ${tgtStr!=='—'?`<div class="efi-meta" style="color:${tgtClr}">${tgtStr}</div>`:''}
+            ${(tgtStr!=='—'||it.notes)?`<div class="efi-meta">${[tgtStr!=='—'?`<span style="color:${tgtClr}">${tgtStr}</span>`:'',it.notes?`<span style="color:var(--muted)">${esc(it.notes)}</span>`:''].filter(Boolean).join('<span style="color:var(--border2)"> · </span>')}</div>`:''}
           </div>
           <div class="efi-right">
             <div class="efi-amt" style="color:${amtColor}">${amt===0?'—':(amountsHidden?'••••':fmt(amt))}</div>
