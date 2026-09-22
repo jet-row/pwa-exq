@@ -3263,7 +3263,7 @@ function confirmCatSheet(){
       Object.values(data).forEach(months=>months.forEach(m=>m.items.forEach(it=>{if(it.category===old)it.category=name;})));
       saveData();
     }
-    categories[editingCatIdx]={name,color,icon};
+    categories[editingCatIdx]={...categories[editingCatIdx],name,color,icon};
   }
   saveCategories();renderCatList();renderOverview();refreshCategorySelects();
   closeSheet('catSheet');toast(editingCatIdx===null?'Category added ✓':'Category saved ✓');
