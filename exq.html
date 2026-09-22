@@ -12,7 +12,7 @@
 <meta property="og:title" content="ExQ-PH">
 <meta property="og:description" content="ExQ-PH — track salary, expenses and savings.">
 <meta property="og:type" content="website">
-<title>ExQ-PH v9</title>
+<title>ExQ v9</title>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='80' height='80' rx='18' fill='%231c2128'/%3E%3Ccircle cx='35' cy='35' r='22' fill='%2358a6ff' fill-opacity='0.07'/%3E%3Ccircle cx='35' cy='35' r='18' fill='none' stroke='%23000' stroke-opacity='0.35' stroke-width='9'/%3E%3Ccircle cx='35' cy='35' r='22' fill='none' stroke='%2358a6ff' stroke-width='5'/%3E%3Ccircle cx='27' cy='24' r='4' fill='white' fill-opacity='0.22'/%3E%3Cline x1='51' y1='51' x2='65' y2='65' stroke='%2358a6ff' stroke-width='5' stroke-linecap='round'/%3E%3Ctext x='35' y='42' font-size='18' font-weight='900' fill='white' font-family='Arial,sans-serif' text-anchor='middle'%3EEx%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" id="appleTouchIcon" href="">
 <script>document.documentElement.dataset.theme=localStorage.getItem('jetiq_theme')||'slate';</script>
@@ -848,13 +848,14 @@ input[type=file]{display:none;}
 .cpt-footer-amt{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:800;color:var(--text);}
 
 /* ── INTEREST TRACKER ────────────────────────── */
-.int-kpi-strip{display:flex;align-items:stretch;margin:0 16px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
+.int-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);margin:0 16px 10px;}
+.int-banner{padding:10px 14px 9px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
+.int-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 55%);pointer-events:none;}
+.int-banner-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;position:relative;color:#fff;}
+.int-banner-badge{font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;background:rgba(0,0,0,.25);color:#fff;position:relative;}
+.int-body{background:var(--card);}
 .sum-sub-tab{flex-shrink:0;padding:10px 22px;border-radius:20px;font-size:16px;font-weight:700;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
 .sum-sub-tab.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-soft);}
-.int-view-tabs{display:flex;gap:6px;padding:0 16px 8px;overflow-x:auto;scrollbar-width:none;}
-.int-view-tabs::-webkit-scrollbar{display:none;}
-.int-view-tab{flex-shrink:0;padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
-.int-view-tab.active{background:var(--accent-soft);color:var(--accent);border-color:var(--accent-soft);}
 .int-tbl-wrap{margin:0 16px 16px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;}
 .int-tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
@@ -875,16 +876,6 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .int-tbl tfoot td{background:var(--card2);border-top:2px solid var(--border);}
 .int-tfoot-lbl{display:flex;align-items:center;justify-content:center;padding:9px 6px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);}
 .int-tfoot-val{display:flex;align-items:center;justify-content:flex-end;padding:9px 10px;font-size:13px;font-family:'JetBrains Mono',monospace;font-weight:800;color:var(--green);}
-.int-sum-card{margin:0 16px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;}
-.int-sum-title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.9px;color:var(--muted);margin-bottom:12px;}
-.int-sum-row{display:flex;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--border);}
-.int-sum-row:last-child{border-bottom:none;}
-.int-sum-acc{display:flex;align-items:center;gap:7px;font-size:15px;font-weight:600;color:var(--text2);}
-.int-sum-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
-.int-sum-amt{font-size:15px;font-weight:800;font-family:'JetBrains Mono',monospace;}
-.int-sum-grand{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:2px solid var(--border2);}
-.int-sum-grand-lbl{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);}
-.int-sum-grand-amt{font-size:20px;font-weight:900;font-family:'JetBrains Mono',monospace;color:var(--green);}
 .int-add-acc-btn{display:flex;align-items:center;gap:10px;margin:8px 16px;padding:13px 14px;background:var(--card);border:1px dashed var(--border2);border-radius:var(--radius-sm);color:var(--accent);font-size:14px;font-weight:700;cursor:pointer;transition:background .15s;font-family:'Inter',sans-serif;width:calc(100% - 32px);}
 .int-add-acc-btn:hover{background:var(--accent-soft);}
 .int-day-input{width:110px;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--text);font-size:14px;font-family:'JetBrains Mono',monospace;font-weight:600;outline:none;text-align:right;transition:border-color .15s;}
@@ -1199,20 +1190,33 @@ html[data-theme="light"] .month-tile.mt-current{border-color:rgba(79,70,229,.5);
           <div style="flex:1;text-align:center;font-size:15px;font-weight:800;letter-spacing:-.3px;" id="intMonthLabel">—</div>
           <button class="nav-arr" onclick="intShiftMonth(1)">›</button>
         </div>
-        <div class="int-view-tabs">
-          <button class="int-view-tab active" onclick="setIntView('daily',this)">Daily</button>
-          <button class="int-view-tab" onclick="setIntView('summary',this)">Summary</button>
+        <!-- Hero banner card -->
+        <div class="int-card">
+          <div class="int-banner" style="background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 55%,#000),var(--accent));flex-direction:column;align-items:stretch;padding:14px 14px 0;">
+            <div style="display:flex;align-items:flex-start;justify-content:space-between;position:relative;">
+              <div>
+                <div style="font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.6);margin-bottom:4px;">Interest Earned · <span id="intHeroLabel">—</span></div>
+                <div style="font-family:'JetBrains Mono',monospace;font-size:28px;font-weight:900;letter-spacing:-1px;color:#fff;line-height:1;margin-bottom:12px;" id="intHeroGrand">₱ —</div>
+              </div>
+              <div style="text-align:right;">
+                <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.55);margin-bottom:3px;">Coverage</div>
+                <div style="font-size:15px;font-weight:800;color:#fff;font-family:'JetBrains Mono',monospace;" id="intHeroCoverage">—</div>
+              </div>
+            </div>
+            <div style="display:flex;border-top:1px solid rgba(255,255,255,.15);margin:0 -14px;" id="intKpiStrip"></div>
+          </div>
         </div>
-        <div class="int-kpi-strip" id="intKpiStrip"></div>
-        <div id="intDailyView">
-          <div class="int-tbl-wrap">
+        <!-- Daily log card -->
+        <div class="int-card">
+          <div class="int-banner" style="background:linear-gradient(135deg,#14532d,#16a34a)">
+            <div class="int-banner-title">Daily Log</div>
+            <div class="int-banner-badge" id="intDailyBadge"></div>
+          </div>
+          <div class="int-body">
             <div class="int-tbl-scroll">
               <table class="int-tbl" id="intTable"></table>
             </div>
           </div>
-        </div>
-        <div id="intSumView" style="display:none">
-          <div class="int-sum-card" id="intSumCard"></div>
         </div>
       </div>
     </div>
@@ -1906,31 +1910,27 @@ function setSumSubTab(name){
   if(name==='trends')renderSummary();
   if(name==='interest')renderInterestScreen();
 }
-function setIntView(v,btn){
-  document.querySelectorAll('.int-view-tab').forEach(t=>t.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('intDailyView').style.display=v==='daily'?'':'none';
-  document.getElementById('intSumView').style.display=v==='summary'?'':'none';
-  if(v==='summary')_renderIntSummary();
-}
 function renderInterestScreen(){
   if(intYear===null)_intInitMonth();
   document.getElementById('intMonthLabel').textContent=_intMonthName()+' '+intYear;
   _renderIntKPI();
-  const sumVisible=document.getElementById('intSumView').style.display!=='none';
-  if(sumVisible)_renderIntSummary();else _renderIntTable();
+  _renderIntTable();
 }
 function _renderIntKPI(){
   const days=_intGetData();
   const totals=interestAccounts.map((_,ai)=>Object.values(days).reduce((s,d)=>s+(d[ai]||0),0));
   const grand=totals.reduce((s,v)=>s+v,0);
-  let html=interestAccounts.map((a,i)=>`
-    <div class="kpi-tile">
-      <div class="kpi-label"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${a.color};vertical-align:middle;margin-right:3px;"></span>${esc(a.name)}</div>
-      <div class="kpi-val" style="color:${a.color}">₱${_intFmtBig(totals[i])}</div>
+  const enteredDays=Object.keys(days).length;
+  const totalDays=_intDaysInMonth(intYear,intMonthIdx);
+  document.getElementById('intHeroLabel').textContent=_intMonthName()+' '+intYear;
+  document.getElementById('intHeroGrand').textContent='₱ '+_intFmtBig(grand);
+  document.getElementById('intHeroCoverage').innerHTML=enteredDays+'<span style="font-size:11px;opacity:.7">/'+totalDays+' days</span>';
+  document.getElementById('intKpiStrip').innerHTML=interestAccounts.map((a,i,arr)=>`
+    <div style="flex:1;padding:9px 14px;background:rgba(0,0,0,.2);${i>0?'border-left:1px solid rgba(255,255,255,.08)':''}">
+      <div style="font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.55);margin-bottom:3px;"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${a.color};vertical-align:middle;margin-right:3px;"></span>${esc(a.name)}</div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:800;color:${a.color};">₱${_intFmtBig(totals[i])}</div>
     </div>`).join('');
-  html+=`<div class="kpi-tile"><div class="kpi-label">Total</div><div class="kpi-val" style="color:var(--green)">₱${_intFmtBig(grand)}</div></div>`;
-  document.getElementById('intKpiStrip').innerHTML=html;
+  const el=document.getElementById('intDailyBadge');if(el)el.textContent=enteredDays+' / '+totalDays+' days';
 }
 function _renderIntTable(){
   const totalDays=_intDaysInMonth(intYear,intMonthIdx);
@@ -1938,50 +1938,31 @@ function _renderIntTable(){
   const today=new Date();
   const isCur=today.getFullYear()===intYear&&today.getMonth()===intMonthIdx;
   const todayDay=today.getDate();
+  const lastDay=isCur?todayDay:totalDays;
   const thead=`<thead><tr><th class="day-col">Day</th>${interestAccounts.map(a=>
     `<th><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${a.color};vertical-align:middle;margin-right:4px;"></span>${esc(a.name)}</th>`
   ).join('')}<th>Total</th></tr></thead>`;
   const colTotals=interestAccounts.map(()=>0);
   let grandTotal=0,rows='';
-  for(let d=1;d<=totalDays;d++){
+  for(let d=lastDay;d>=1;d--){
     const dayData=days[d]||{};
-    const isFuture=isCur&&d>todayDay;
     const isToday=isCur&&d===todayDay;
     const rowTotal=interestAccounts.reduce((s,_,i)=>s+(dayData[i]||0),0);
     interestAccounts.forEach((_,i)=>{colTotals[i]+=(dayData[i]||0);});
     grandTotal+=rowTotal;
-    rows+=`<tr class="${isToday?'int-today':''}" onclick="${isFuture?'':  `openIntDaySheet(${d})`}">
+    rows+=`<tr class="${isToday?'int-today':''}" onclick="openIntDaySheet(${d})">
       <td><div class="day-num">${d}</div></td>
       ${interestAccounts.map((a,i)=>{
         const v=dayData[i];
-        if(isFuture)return`<td><div class="int-cell int-future">—</div></td>`;
         return`<td><div class="int-cell${v!=null?' has-val':''}"${v!=null?` style="color:${a.color}"`:''  }>${v!=null?_intFmt(v):'—'}</div></td>`;
       }).join('')}
-      <td><div class="int-cell${rowTotal>0?' int-total':' int-future'}">${rowTotal>0?_intFmt(rowTotal):'—'}</div></td>
+      <td><div class="int-cell${rowTotal>0?' int-total':''}">${rowTotal>0?_intFmt(rowTotal):'—'}</div></td>
     </tr>`;
   }
   const tfoot=`<tfoot><tr><td><div class="int-tfoot-lbl">TOT</div></td>${interestAccounts.map((a,i)=>
     `<td><div class="int-tfoot-val" style="color:${a.color}">₱${_intFmtBig(colTotals[i])}</div></td>`
   ).join('')}<td><div class="int-tfoot-val">₱${_intFmtBig(grandTotal)}</div></td></tr></tfoot>`;
   document.getElementById('intTable').innerHTML=thead+`<tbody>${rows}</tbody>`+tfoot;
-}
-function _renderIntSummary(){
-  const days=_intGetData();
-  const totals=interestAccounts.map((_,ai)=>Object.values(days).reduce((s,d)=>s+(d[ai]||0),0));
-  const grand=totals.reduce((s,v)=>s+v,0);
-  const enteredDays=Object.keys(days).length;
-  const totalDays=_intDaysInMonth(intYear,intMonthIdx);
-  document.getElementById('intSumCard').innerHTML=`
-    <div class="int-sum-title">${esc(_intMonthName())} ${intYear} · ${enteredDays}/${totalDays} days</div>
-    ${interestAccounts.map((a,i)=>`
-      <div class="int-sum-row">
-        <div class="int-sum-acc"><div class="int-sum-dot" style="background:${a.color}"></div>${esc(a.name)}</div>
-        <div class="int-sum-amt" style="color:${a.color}">₱${_intFmtBig(totals[i])}</div>
-      </div>`).join('')}
-    <div class="int-sum-grand">
-      <div class="int-sum-grand-lbl">Grand Total</div>
-      <div class="int-sum-grand-amt">₱${_intFmtBig(grand)}</div>
-    </div>`;
 }
 function openIntDaySheet(day){
   _intEditDay=day;
