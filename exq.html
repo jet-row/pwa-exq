@@ -2165,7 +2165,7 @@ function selectFromPicker(year,idx){
 }
 
 /* ── DASHBOARD ────────────────────────────── */
-let curPeriod='mid',showZeroItems=false,statusFilter='all',tblSortCol='default',tblSortDir=1;
+let curPeriod='mid',showZeroItems=false,statusFilter='pending',tblSortCol='default',tblSortDir=1;
 let historyYr='';
 let listView=localStorage.getItem('jetiq_list_view')||'compact'; // 'comfortable' | 'compact'
 function setListView(v){listView=v;localStorage.setItem('jetiq_list_view',v);renderSvList();}
@@ -2209,7 +2209,7 @@ function toggleItemStatus(idx,e){
   _touch(curYear,curMonthIdx);saveData();updateHeroCard();renderSvList();updateNavBadge();
   toast(`${it.name}: ${newSt==='paid'?'Paid ✓':'Pending'}`,'ok');
 }
-function resetPeriod(){curPeriod='mid';tblSortCol='default';tblSortDir=1;document.querySelectorAll('.hpt-btn').forEach((b,i)=>b.classList.toggle('active',i===0));document.querySelectorAll('.ring-card').forEach((c,i)=>c.classList.toggle('active',i===0));document.querySelectorAll('.period-tab').forEach((t,i)=>t.classList.toggle('active',i===0));}
+function resetPeriod(){curPeriod='mid';tblSortCol='default';tblSortDir=1;statusFilter='pending';document.querySelectorAll('.hpt-btn').forEach((b,i)=>b.classList.toggle('active',i===0));document.querySelectorAll('.ring-card').forEach((c,i)=>c.classList.toggle('active',i===0));document.querySelectorAll('.period-tab').forEach((t,i)=>t.classList.toggle('active',i===0));}
 
 function setSvPeriod(p){
   curPeriod=p;
@@ -2409,6 +2409,7 @@ function renderSvList(){
     const s=isMid?(it.midStatus||'pending'):(it.endStatus||'pending');
     statusCounts[s==='paid'?'paid':'pending']++;
   });
+  if(statusFilter==='pending'&&statusCounts.pending===0)statusFilter='all';
 
   /* urgency counts for header badges — skip zero-amount items */
   let overdueCount=0,soonCount=0;
