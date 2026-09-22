@@ -4201,16 +4201,17 @@ function migrateCategories(){
     const defMap=Object.fromEntries(DEFAULT_CATEGORIES.map(c=>[c.name,c]));
     categories.forEach(c=>{if(!c.icon)c.icon=defMap[c.name]?.icon||'info';});
   }
-  /* backfill items[] from months for any category that doesn't have it yet */
-  if(categories.some(c=>!Array.isArray(c.items))){
-    const byMonths={};categories.forEach(c=>byMonths[c.name]=[]);
-    Object.values(data).forEach(ms=>ms.forEach(m=>m.items.forEach(it=>{
-      const cat=getCategory(it);
-      if(!byMonths[cat])byMonths[cat]=[];
-      if(!byMonths[cat].includes(it.name))byMonths[cat].push(it.name);
-    })));
-    categories.forEach(c=>{if(!Array.isArray(c.items))c.items=byMonths[c.name]||[];});
-  }
+  /* backfill items[] from months — always additive so stripped arrays are recovered */
+  const _byMonths={};categories.forEach(c=>_byMonths[c.name]=[]);
+  Object.values(data).forEach(ms=>ms.forEach(m=>m.items.forEach(it=>{
+    const cat=getCategory(it);
+    if(!_byMonths[cat])_byMonths[cat]=[];
+    if(!_byMonths[cat].includes(it.name))_byMonths[cat].push(it.name);
+  })));
+  categories.forEach(c=>{
+    if(!Array.isArray(c.items))c.items=[];
+    (_byMonths[c.name]||[]).forEach(n=>{if(!c.items.includes(n))c.items.push(n);});
+  });
   saveCategories();
 }
 
