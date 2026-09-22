@@ -949,6 +949,36 @@ html[data-theme="light"] .month-tile.mt-current{border-color:rgba(79,70,229,.5);
 .mt-act-btn:active{transform:scale(.9);}
 .mt-act-del:hover{background:rgba(239,68,68,.12);color:var(--red);border-color:rgba(239,68,68,.3);}
 /* ══ END REDESIGN ══════════════════════════════ */
+
+/* ── HISTORY BANNER CARD GRID ─────────────────── */
+.bn-month-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;}
+.bn-month-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.18);cursor:pointer;transition:transform .14s,box-shadow .14s;}
+.bn-month-card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.28);}
+.bn-month-card:active{transform:scale(.97);}
+.bn-month-card.current{box-shadow:0 4px 20px var(--accent-soft),0 0 0 1.5px var(--accent);}
+.bn-mc-banner{padding:12px 12px 9px;position:relative;overflow:hidden;}
+.bn-mc-banner::after{content:'';position:absolute;right:-16px;top:-16px;width:72px;height:72px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none;}
+.bn-mc-name{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.75);margin-bottom:4px;display:flex;align-items:center;gap:5px;}
+.bn-mc-now{font-size:8px;font-weight:900;background:rgba(255,255,255,.25);color:#fff;padding:1px 5px;border-radius:3px;letter-spacing:.4px;flex-shrink:0;}
+.bn-mc-net{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:900;letter-spacing:-1px;color:#fff;line-height:1;}
+.bn-mc-body{background:var(--card);padding:9px 12px 10px;}
+.bn-mc-bar{height:4px;background:var(--border2);border-radius:3px;overflow:hidden;margin-bottom:6px;}
+.bn-mc-bar-fill{height:100%;border-radius:3px;}
+.bn-mc-meta{margin-bottom:7px;}
+.bn-mc-paid{font-size:10px;color:var(--muted);font-weight:700;}
+.bn-mc-paid.all-paid{color:var(--green);}
+.bn-mc-actions{display:flex;gap:4px;}
+.bn-mc-btn{flex:1;padding:5px 0;border-radius:6px;background:var(--card2);border:1px solid var(--border);color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .12s;}
+.bn-mc-btn:hover{background:var(--card3);color:var(--text);}
+.bn-mc-btn.del:hover{background:var(--red-soft);color:var(--red);border-color:rgba(248,113,113,.3);}
+.bn-mc-lock-btn{color:var(--amber)!important;border-color:rgba(251,146,60,.4)!important;background:var(--amber-soft)!important;}
+.bn-month-add{border-radius:14px;border:1.5px dashed var(--border2);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:20px 12px;color:var(--muted);font-size:11px;font-weight:700;cursor:pointer;transition:all .14s;min-height:120px;}
+.bn-month-add:hover{border-color:var(--accent);color:var(--accent);}
+.bn-empty-section{margin-top:12px;}
+.bn-empty-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:6px;}
+.bn-empty-chips{display:flex;flex-wrap:wrap;gap:4px;}
+.bn-empty-chip{padding:3px 10px;border-radius:12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);border:1px solid var(--border);cursor:pointer;transition:all .12s;}
+.bn-empty-chip:hover{border-color:var(--accent);color:var(--accent);}
 </style>
 </head>
 <body>
@@ -2594,86 +2624,114 @@ function renderMonths(){
     return;
   }
 
-  // ensure historyYr is valid
   const _curYr=String(new Date().getFullYear());
   if(!data[historyYr])historyYr=data[_curYr]?_curYr:years[years.length-1];
 
-  // Year tabs
   if(tabsEl){
     tabsEl.innerHTML=years.map(y=>`<button class="history-yr-tab${y===historyYr?' active':''}" onclick="setHistoryYear('${y}')">${y}</button>`).join('');
   }
 
-  // Month grid
   const sys=getSysMonth();
-  const allMonthNames=MONTHS; // full names match stored m.month
   const months=data[historyYr]||[];
-
-  // Build a map: monthName -> {m, i}
   const monthMap={};months.forEach((m,i)=>{monthMap[m.month]={m,i};});
 
-  let totalNet=0;let tracked=0;
+  let totalNet=0,tracked=0;
   months.forEach(m=>{
     const inc=(m.projectedNetPayMid||0)+(m.projectedNetPayEnd||0);
-    const used=spentMid(m)+spentEnd(m)+budgetMid(m)+budgetEnd(m);
-    totalNet+=inc-used;tracked++;
+    totalNet+=inc-spentMid(m)-spentEnd(m)-budgetMid(m)-budgetEnd(m);
+    tracked++;
   });
-
   const netColor=totalNet>=0?'var(--green)':'var(--red)';
 
-  const tiles=allMonthNames.map(mn=>{
-    const entry=monthMap[mn];
-    const isCurrent=historyYr===sys.year&&mn===sys.monthName;
-    if(!entry){
-      return`<div class="month-tile mt-empty${isCurrent?' mt-current':''}">
-        <div class="mt-name">${mn.slice(0,3)}</div>
-        <div class="mt-net">—</div>
-        <div class="mt-bar"></div>
+  /* SVG icon helpers */
+  const _lockSvg=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+  const _unlockSvg=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`;
+  const _copySvg=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>`;
+  const _delSvg=`<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/></svg>`;
+
+  /* Banner cards — tracked months only, in calendar order */
+  const trackedCards=MONTHS
+    .filter(mn=>monthMap[mn])
+    .map(mn=>{
+      const {m,i}=monthMap[mn];
+      const y=historyYr;
+      const isCurrent=historyYr===sys.year&&mn===sys.monthName;
+      const isLocked=!!m.locked;
+      const inc=(m.projectedNetPayMid||0)+(m.projectedNetPayEnd||0);
+      const used=spentMid(m)+spentEnd(m)+budgetMid(m)+budgetEnd(m);
+      const net=inc-used;
+      const isSurplus=net>=0;
+      const barPct=inc>0?Math.min(100,Math.round(Math.abs(net)/inc*100)):0;
+      const activeItems=m.items.filter(it=>it.mid>0||it.end>0);
+      const paidItems=activeItems.filter(it=>{
+        if(it.mid>0&&(it.midStatus||'pending')!=='paid')return false;
+        if(it.end>0&&(it.endStatus||'pending')!=='paid')return false;
+        return true;
+      }).length;
+      const pct=activeItems.length?Math.round(paidItems/activeItems.length*100):0;
+
+      /* gradient: current=accent, surplus=deep green, deficit=deep red */
+      const grad=isCurrent
+        ?`linear-gradient(135deg,color-mix(in srgb,var(--accent) 80%,#000),var(--accent))`
+        :isSurplus
+        ?`linear-gradient(135deg,#14532d,#16a34a)`
+        :`linear-gradient(135deg,#7f1d1d,#dc2626)`;
+
+      const barColor=isSurplus?'var(--green)':'var(--red)';
+      const netStr=amountsHidden?'••••':(isSurplus?'+':'')+fmtShort(net);
+      const paidStr=pct===100?'all paid ✓':paidItems+'/'+activeItems.length+' paid';
+
+      return`<div class="bn-month-card${isCurrent?' current':''}" onclick="selectAndGo('${y}',${i})">
+        <div class="bn-mc-banner" style="background:${grad}">
+          <div class="bn-mc-name">${mn.slice(0,3)}${isCurrent?`<span class="bn-mc-now">NOW</span>`:''}${isLocked?`<svg style="margin-left:auto;color:var(--amber)" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`:''}</div>
+          <div class="bn-mc-net">${netStr}</div>
+        </div>
+        <div class="bn-mc-body">
+          <div class="bn-mc-bar"><div class="bn-mc-bar-fill" style="width:${barPct}%;background:${barColor}"></div></div>
+          <div class="bn-mc-meta"><span class="bn-mc-paid${pct===100?' all-paid':''}">${paidStr}</span></div>
+          <div class="bn-mc-actions" onclick="event.stopPropagation()">
+            <button class="bn-mc-btn${isLocked?' bn-mc-lock-btn':''}" onclick="toggleMonthLock('${y}',${i},event)" title="${isLocked?'Unlock':'Lock'}">${_lockSvg}</button>
+            <button class="bn-mc-btn" onclick="openCopySheet('${y}',${i})" title="Copy">${_copySvg}</button>
+            <button class="bn-mc-btn del" onclick="deleteMonth('${y}',${i})" title="Delete">${_delSvg}</button>
+          </div>
+        </div>
       </div>`;
-    }
-    const {m,i}=entry;
-    const y=historyYr;
-    const inc=(m.projectedNetPayMid||0)+(m.projectedNetPayEnd||0);
-    const used=spentMid(m)+spentEnd(m)+budgetMid(m)+budgetEnd(m);
-    const net=inc-used;
-    const isSurplus=net>=0;
-    const barPct=inc>0?Math.min(100,Math.round(Math.abs(net)/inc*100)):0;
-    const barColor=isSurplus?'var(--green)':'var(--red)';
-    const netStr=amountsHidden?'••••':(isSurplus?'+':'')+fmtShort(net);
-    const isLocked=!!m.locked;
-    const activeItems=m.items.filter(it=>it.mid>0||it.end>0);
-    const paidItems=activeItems.filter(it=>{
-      if(it.mid>0&&(it.midStatus||'pending')!=='paid')return false;
-      if(it.end>0&&(it.endStatus||'pending')!=='paid')return false;
-      return true;
-    }).length;
-    const pct=activeItems.length?Math.round(paidItems/activeItems.length*100):0;
-    return`<div class="month-tile ${isSurplus?'mt-surplus':'mt-deficit'}${isCurrent?' mt-current':''}" onclick="selectAndGo('${y}',${i})">
-      <div class="mt-header">
-        <div class="mt-name">${mn.slice(0,3)}${isCurrent?'<span class="mt-now">NOW</span>':''}</div>
-        ${isLocked?'<svg class="mt-lock" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>':''}
-      </div>
-      <div class="mt-net">${netStr}</div>
-      <div class="mt-bar"><div class="mt-bar-fill" style="width:${barPct}%;background:${barColor}"></div></div>
-      <div class="mt-prog">${pct===100?'✓ all paid':paidItems+'/'+activeItems.length+' paid'}</div>
-      <div class="mt-actions" onclick="event.stopPropagation()">
-        <button class="mt-act-btn" onclick="toggleMonthLock('${y}',${i},event)" title="${isLocked?'Unlock':'Lock'}">${isLocked?'🔒':'🔓'}</button>
-        <button class="mt-act-btn" onclick="openCopySheet('${y}',${i})" title="Copy">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        </button>
-        <button class="mt-act-btn mt-act-del" onclick="deleteMonth('${y}',${i})" title="Delete">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/></svg>
-        </button>
-      </div>
-    </div>`;
-  }).join('');
+    }).join('');
+
+  /* add-month ghost card */
+  const addCard=`<div class="bn-month-add" onclick="openAddMonthSheet()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+    Add month
+  </div>`;
+
+  /* empty months chip strip */
+  const trackedSet=new Set(months.map(m=>m.month));
+  const emptyChips=MONTHS
+    .filter(mn=>!trackedSet.has(mn))
+    .map(mn=>`<span class="bn-empty-chip" onclick="quickAddMonth('${mn}')">${mn.slice(0,3)}</span>`)
+    .join('');
 
   el.innerHTML=`<div class="month-grid-wrap">
     <div class="month-grid-meta">
       <span>${historyYr} · ${tracked} month${tracked!==1?'s':''} tracked</span>
       <span class="month-grid-meta-net" style="color:${netColor}">${amountsHidden?'••••':((totalNet>=0?'+ ':'− ')+fmtShort(Math.abs(totalNet)))}</span>
     </div>
-    <div class="month-grid">${tiles}</div>
+    <div class="bn-month-grid">
+      ${trackedCards}
+      ${addCard}
+    </div>
+    ${emptyChips?`<div class="bn-empty-section">
+      <div class="bn-empty-label">Untracked — tap to add</div>
+      <div class="bn-empty-chips">${emptyChips}</div>
+    </div>`:''}
   </div>`;
+}
+function quickAddMonth(monthName){
+  const mi=MONTHS.indexOf(monthName);if(mi<0)return;
+  const yr=historyYr||String(new Date().getFullYear());
+  document.getElementById('am-year').value=yr;
+  document.getElementById('am-month').value=String(mi);
+  openSheet('addMonthSheet');
 }
 
 function isMonthLocked(){return !!(curMonth()&&curMonth().locked);}
