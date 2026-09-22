@@ -505,6 +505,50 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .trnd-ins-val{font-size:15px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .trnd-ins-sub{font-size:12px;color:var(--muted);margin-top:1px;}
 
+/* ── INSIGHTS REDESIGN (Concept A) ── */
+.ins-hero{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);margin:0 16px 12px;box-shadow:0 4px 20px rgba(0,0,0,.2);}
+.ins-hero-banner{padding:16px 16px 14px;position:relative;overflow:hidden;}
+.ins-hero-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.07),transparent 55%);pointer-events:none;}
+.ins-hero-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;opacity:.7;margin-bottom:8px;position:relative;}
+.ins-hero-rate-row{display:flex;align-items:flex-end;gap:14px;position:relative;}
+.ins-hero-rate{font-family:'JetBrains Mono',monospace;font-size:42px;font-weight:900;letter-spacing:-2px;line-height:1;}
+.ins-hero-rate sup{font-size:18px;vertical-align:top;margin-top:8px;}
+.ins-hero-amt-col{padding-bottom:5px;}
+.ins-hero-amt{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:900;letter-spacing:-1px;line-height:1;}
+.ins-hero-amt-sub{font-size:10px;opacity:.65;font-weight:600;margin-top:3px;}
+.ins-hero-sub{font-size:11px;opacity:.7;margin-top:8px;font-weight:600;position:relative;}
+.ins-hero-footer{display:flex;border-top:1px solid rgba(255,255,255,.15);margin:12px -16px -14px;}
+.ins-hstat{flex:1;padding:10px 14px;background:rgba(0,0,0,.2);}
+.ins-hstat+.ins-hstat{border-left:1px solid rgba(255,255,255,.08);}
+.ins-hstat-label{font-size:8px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.55);margin-bottom:3px;}
+.ins-hstat-val{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:800;}
+.ins-kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 16px 12px;}
+.ins-kpi-cell{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:10px 12px;}
+.ins-kpi-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin-bottom:3px;}
+.ins-kpi-val{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;letter-spacing:-.5px;}
+.ins-kpi-sub{font-size:9px;color:var(--muted);margin-top:2px;}
+.ins-sec-card{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);margin:0 16px 12px;}
+.ins-sec-banner{padding:10px 14px 9px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
+.ins-sec-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.07),transparent 55%);pointer-events:none;}
+.ins-sec-banner-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;position:relative;}
+.ins-sec-banner-badge{font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;background:rgba(0,0,0,.25);position:relative;}
+.ins-sec-body{background:var(--card);padding:12px 14px;}
+.ins-cat-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--border);}
+.ins-cat-row:first-child{border-top:none;}
+.ins-cat-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.ins-cat-name{flex:1;font-size:12px;font-weight:700;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.ins-cat-bar-wrap{width:60px;height:5px;background:var(--border);border-radius:3px;overflow:hidden;flex-shrink:0;}
+.ins-cat-bar-fill{height:100%;border-radius:3px;}
+.ins-cat-pct{font-size:10px;font-weight:700;min-width:28px;text-align:right;}
+.ins-cat-amt{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:800;min-width:52px;text-align:right;}
+.ins-irow{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid var(--border);}
+.ins-irow:first-child{border-top:none;}
+.ins-irow-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+.ins-irow-label{font-size:12px;font-weight:700;}
+.ins-irow-sub{font-size:10px;color:var(--muted);margin-top:1px;}
+.ins-irow-val{font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:800;text-align:right;}
+.ins-irow-rate{font-size:9px;color:var(--muted);text-align:right;margin-top:1px;}
+
 /* ── SETTINGS SCREEN ───────────────────────── */
 .data-actions{padding:0 16px;display:flex;flex-direction:column;gap:8px;}
 .data-btn{display:flex;align-items:center;gap:14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;cursor:pointer;transition:background .12s;}
@@ -554,6 +598,22 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .danger-sep{display:flex;align-items:center;gap:10px;margin:8px 16px 8px;}
 .danger-sep-line{flex:1;height:1px;background:rgba(248,113,113,.2);}
 .danger-sep-tag{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:1.2px;color:var(--red);opacity:.7;}
+
+/* ── SETTINGS REDESIGN (Concept A) ── */
+.set-card{border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border);margin:0 16px 10px;}
+.set-banner{padding:10px 14px 9px;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
+.set-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 55%);pointer-events:none;}
+.set-banner-title{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;position:relative;}
+.set-banner-badge{font-size:10px;font-weight:800;padding:3px 8px;border-radius:20px;background:rgba(0,0,0,.22);position:relative;}
+.set-body{background:var(--card);}
+.set-row{display:flex;align-items:center;gap:12px;padding:11px 14px;border-top:1px solid var(--border);cursor:pointer;text-decoration:none;color:inherit;}
+.set-row:first-child{border-top:none;}
+.set-row:active{background:var(--card2);}
+.set-row-icon{width:34px;height:34px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.set-row-info{flex:1;min-width:0;}
+.set-row-title{font-size:13px;font-weight:700;}
+.set-row-desc{font-size:11px;color:var(--muted);margin-top:1px;}
+.set-row-arrow{font-size:18px;color:var(--muted);flex-shrink:0;}
 
 /* ── SHEETS ────────────────────────────────── */
 .sheet-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:9999;display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .25s;}
@@ -853,12 +913,12 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .new-hero-card{margin:4px 14px 14px;background:color-mix(in srgb,var(--accent) 10%,var(--card));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:0 4px 28px rgba(0,0,0,.28),0 2px 12px var(--accent-soft),inset 0 1px 0 rgba(255,255,255,.05);}
 .new-hero-card::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 28%,transparent) 0%,transparent 70%);pointer-events:none;}
 .period-tabs{display:flex;border-bottom:1px solid rgba(0,0,0,.25);background:var(--accent);position:relative;}
-.period-tab{flex:1;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.55);cursor:pointer;transition:all .18s;border-right:1px solid rgba(255,255,255,.15);}
+.period-tab{flex:1;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.4);cursor:pointer;transition:all .18s;border-right:1px solid rgba(255,255,255,.15);border-bottom:2.5px solid transparent;}
 .period-tabs::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 60%);pointer-events:none;}
 .period-tab:last-child{border-right:none;}
-.period-tab.active{color:#fff;background:rgba(255,255,255,.22);}
+.period-tab.active{color:#fff;background:rgba(255,255,255,.18);border-bottom:2.5px solid #fff;}
 .period-tab:active{opacity:.7;}
-.period-tab-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);flex-shrink:0;transition:background .18s;}
+.period-tab-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);flex-shrink:0;transition:background .18s;}
 .period-tab.active .period-tab-dot{background:#fff;}
 .hero-body{padding:12px 16px 10px;}
 .hero-net-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:3px;}
@@ -1154,93 +1214,102 @@ html[data-theme="light"] .month-tile.mt-current{border-color:rgba(79,70,229,.5);
 
     <!-- SETTINGS -->
     <div class="screen" id="screen-data">
-      <div class="screen-header" style="padding-bottom:4px">
+      <div class="screen-header" style="padding-bottom:8px">
         <div class="screen-title">Settings</div>
       </div>
-      <div class="settings-section-title">Cloud Sync</div>
-      <div style="margin:0 16px 14px;">
-        <div id="fbInlinePanel" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;"></div>
-      </div>
 
-      <div id="backupBanner" style="display:none;align-items:center;gap:10px;margin:0 16px 14px;background:rgba(251,146,60,.12);border:1px solid rgba(251,146,60,.3);border-radius:var(--radius-sm);padding:12px 14px;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <div style="flex:1"><div style="font-size:12px;font-weight:800;color:#fb923c" class="bb-msg">Back up your data!</div><div style="font-size:10px;color:var(--dim);margin-top:2px">Tap Backup below to save your data.</div></div>
-        <button onclick="backupJSON()" style="background:#fb923c;color:#000;border:none;border-radius:8px;padding:6px 12px;font-size:11px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">Backup</button>
-      </div>
-
-      <!-- DATA MANAGEMENT -->
-      <div class="settings-section-title">Data Management</div>
-
-      <div style="padding:0 16px 6px"><span class="section-label">Backup</span></div>
-      <div class="data-actions" style="margin-bottom:14px;">
-        <input type="file" id="restoreFile" accept=".json">
-        <div class="data-btn" onclick="backupJSON()">
-          <div class="data-btn-icon" style="background:var(--green-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></div>
-          <div class="data-btn-info"><div class="data-btn-title">Save Backup (.json)</div><div class="data-btn-desc">Export full backup file</div></div>
-          <div class="data-btn-arrow">›</div>
+      <!-- Cloud Sync card (accent) -->
+      <div class="set-card">
+        <div class="set-banner" style="background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 55%,#000),var(--accent))">
+          <div class="set-banner-title" style="color:#fff">Cloud Sync</div>
         </div>
-        <label for="restoreFile" class="data-btn">
-          <div class="data-btn-icon" style="background:var(--green-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
-          <div class="data-btn-info"><div class="data-btn-title">Restore from Backup</div><div class="data-btn-desc">Load a previous backup</div></div>
-          <div class="data-btn-arrow">›</div>
-        </label>
-      </div>
-
-      <div style="padding:0 16px 6px"><span class="section-label">Import / Export</span></div>
-      <div class="data-actions">
-        <input type="file" id="importXlsx" accept=".xlsx,.xls">
-        <label for="importXlsx" class="data-btn">
-          <div class="data-btn-icon" style="background:var(--green-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
-          <div class="data-btn-info"><div class="data-btn-title">Import from Excel (.xlsx)</div><div class="data-btn-desc">Load data from .xlsx file</div></div>
-          <div class="data-btn-arrow">›</div>
-        </label>
-        <div class="data-btn" onclick="exportExcel()">
-          <div class="data-btn-icon" style="background:var(--green-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
-          <div class="data-btn-info"><div class="data-btn-title">Export to Excel (.xlsx)</div><div class="data-btn-desc">Save as .xlsx spreadsheet</div></div>
-          <div class="data-btn-arrow">›</div>
+        <div class="set-body">
+          <div id="backupBanner" style="display:none;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid rgba(251,146,60,.2);background:rgba(251,146,60,.08);">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fb923c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <div style="flex:1"><div style="font-size:12px;font-weight:800;color:#fb923c" class="bb-msg">Back up your data!</div><div style="font-size:10px;color:var(--dim);margin-top:1px">Tap Backup below to save your data.</div></div>
+            <button onclick="backupJSON()" style="background:#fb923c;color:#000;border:none;border-radius:8px;padding:5px 10px;font-size:11px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">Backup</button>
+          </div>
+          <div id="fbInlinePanel" style="border-bottom:1px solid var(--border);overflow:hidden;"></div>
+          <div id="dataStatsRow" style="padding:9px 14px;font-size:11px;color:var(--muted);font-weight:600;">Loading…</div>
         </div>
       </div>
-      <!-- Interest Accounts -->
-      <div class="crl-section-hdr acc-hdr" onclick="toggleAcc('intAcc',event)">
-        <div class="acc-hdr-left">
-          <svg id="intAcc-chevron" class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          <span class="settings-section-title" style="padding:0">Interest Accounts</span>
+
+      <!-- Data Management card (green) -->
+      <div class="set-card">
+        <div class="set-banner" style="background:linear-gradient(135deg,#14532d,#16a34a)">
+          <div class="set-banner-title" style="color:#bbf7d0">Data Management</div>
         </div>
-        <button class="crl-add-btn" onclick="openIntAccSheet(null)">+ Add</button>
-      </div>
-      <div id="intAcc-body" class="acc-body closed">
-        <div id="intAccList" class="crl-wrap" style="margin:0 16px 8px"></div>
-      </div>
-
-      <!-- Category management -->
-      <div class="crl-section-hdr acc-hdr" onclick="toggleAcc('cat',event)">
-        <div class="acc-hdr-left">
-          <svg id="cat-chevron" class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          <span class="settings-section-title" style="padding:0">Categories</span>
-        </div>
-        <button class="crl-add-btn" onclick="openCatSheet(null)">+ Add</button>
-      </div>
-      <div id="cat-body" class="acc-body closed">
-        <div id="catList" class="crl-wrap"></div>
-      </div>
-
-
-      <!-- Stats row -->
-      <div style="margin:0 16px 14px;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:12px;color:var(--dim);font-weight:600;" id="dataStatsRow">Loading…</div>
-
-      <!-- Danger zone — visually separated from safe actions -->
-      <div class="danger-sep">
-        <div class="danger-sep-line"></div>
-        <div class="danger-sep-tag">Danger Zone</div>
-        <div class="danger-sep-line"></div>
-      </div>
-      <div class="data-actions">
-        <div class="data-btn" onclick="confirmReset()" style="border-color:rgba(248,113,113,.25)">
-          <div class="data-btn-icon" style="background:var(--red-soft)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div>
-          <div class="data-btn-info"><div class="data-btn-title" style="color:var(--red)">Reset All Data</div><div class="data-btn-desc">Erase everything and start fresh</div></div>
-          <div class="data-btn-arrow" style="color:var(--red)">›</div>
+        <div class="set-body">
+          <input type="file" id="restoreFile" accept=".json" style="display:none">
+          <input type="file" id="importXlsx" accept=".xlsx,.xls" style="display:none">
+          <div class="set-row" onclick="backupJSON()">
+            <div class="set-row-icon" style="background:var(--green-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg></div>
+            <div class="set-row-info"><div class="set-row-title">Save Backup</div><div class="set-row-desc">Export full backup (.json)</div></div>
+            <div class="set-row-arrow">›</div>
+          </div>
+          <label for="restoreFile" class="set-row">
+            <div class="set-row-icon" style="background:var(--green-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></div>
+            <div class="set-row-info"><div class="set-row-title">Restore from Backup</div><div class="set-row-desc">Load a previous .json file</div></div>
+            <div class="set-row-arrow">›</div>
+          </label>
+          <label for="importXlsx" class="set-row">
+            <div class="set-row-icon" style="background:var(--green-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+            <div class="set-row-info"><div class="set-row-title">Import from Excel</div><div class="set-row-desc">Load data from .xlsx</div></div>
+            <div class="set-row-arrow">›</div>
+          </label>
+          <div class="set-row" onclick="exportExcel()">
+            <div class="set-row-icon" style="background:var(--green-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg></div>
+            <div class="set-row-info"><div class="set-row-title">Export to Excel</div><div class="set-row-desc">Save as .xlsx spreadsheet</div></div>
+            <div class="set-row-arrow">›</div>
+          </div>
         </div>
       </div>
+
+      <!-- Configuration card (amber) -->
+      <div class="set-card">
+        <div class="set-banner" style="background:linear-gradient(135deg,#78350f,#d97706)">
+          <div class="set-banner-title" style="color:#fef3c7">Configuration</div>
+        </div>
+        <div class="set-body">
+          <div class="set-row acc-hdr" onclick="toggleAcc('intAcc',event)">
+            <div class="set-row-icon" style="background:var(--amber-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+            <div class="set-row-info"><div class="set-row-title">Interest Accounts</div></div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <button class="crl-add-btn" onclick="openIntAccSheet(null)" style="font-size:11px;font-weight:800;padding:5px 10px;border-radius:8px;background:var(--amber-soft);color:var(--amber);border:none;cursor:pointer;font-family:inherit;">+ Add</button>
+              <svg id="intAcc-chevron" class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div id="intAcc-body" class="acc-body closed">
+            <div id="intAccList" class="crl-wrap" style="margin:0 14px 8px"></div>
+          </div>
+          <div class="set-row acc-hdr" onclick="toggleAcc('cat',event)">
+            <div class="set-row-icon" style="background:var(--amber-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+            <div class="set-row-info"><div class="set-row-title">Categories</div></div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <button class="crl-add-btn" onclick="openCatSheet(null)" style="font-size:11px;font-weight:800;padding:5px 10px;border-radius:8px;background:var(--amber-soft);color:var(--amber);border:none;cursor:pointer;font-family:inherit;">+ Add</button>
+              <svg id="cat-chevron" class="acc-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+          </div>
+          <div id="cat-body" class="acc-body closed">
+            <div id="catList" class="crl-wrap"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Danger Zone card (red) -->
+      <div class="set-card" style="border-color:rgba(248,113,113,.25);margin-bottom:24px">
+        <div class="set-banner" style="background:linear-gradient(135deg,#7f1d1d,#dc2626)">
+          <div class="set-banner-title" style="color:#fecaca">Danger Zone</div>
+        </div>
+        <div class="set-body">
+          <div class="set-row" onclick="confirmReset()">
+            <div class="set-row-icon" style="background:var(--red-soft)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg></div>
+            <div class="set-row-info"><div class="set-row-title" style="color:var(--red)">Reset All Data</div><div class="set-row-desc">Erase everything and start fresh</div></div>
+            <div class="set-row-arrow" style="color:var(--red)">›</div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
   </div><!-- /screens -->
@@ -1612,6 +1681,7 @@ function setTheme(name){
   document.querySelectorAll('.theme-swatch').forEach(el=>el.classList.toggle('active',el.dataset.theme===name||el.dataset.t===name));
   const btn=document.getElementById('themeToggleBtn');
   if(btn) btn.innerHTML=name==='slate'?_ICON_SUN:_ICON_MOON;
+  if(activeScreen==='summary'&&sumSubTab==='trends')renderSummary();
 }
 function toggleTheme(){
   setTheme(document.documentElement.dataset.theme==='slate'?'light':'slate');
@@ -2814,24 +2884,24 @@ function renderSummary(){
   if(!sumYear||!data[sumYear])sumYear=data[_curYr]?_curYr:years[years.length-1];
 
   const months=data[sumYear]||[];
-  const totalSpent=months.reduce((s,m)=>s+spentMid(m)+spentEnd(m),0); // paid only
-  const totalBudget=months.reduce((s,m)=>s+budgetMid(m)+budgetEnd(m),0); // payable only
+  const totalSpent=months.reduce((s,m)=>s+spentMid(m)+spentEnd(m),0);
+  const totalBudget=months.reduce((s,m)=>s+budgetMid(m)+budgetEnd(m),0);
   const totalProj=months.reduce((s,m)=>s+m.projectedNetPayMid+m.projectedNetPayEnd,0);
-  const totalNet=totalProj-totalSpent-totalBudget; // income - settled - payable
+  const totalNet=totalProj-totalSpent-totalBudget;
   const savRate=totalProj>0?Math.max(0,Math.min(100,Math.round((1-(totalSpent+totalBudget)/totalProj)*100))):0;
+  const n=months.length||1;
+  const avgIncome=totalProj/n;
+  const avgExpenses=(totalSpent+totalBudget)/n;
 
-  /* per-month nets for bar chart — deduct both settled and payable */
-  const monthNets=months.map(m=>({label:m.month.slice(0,3),net:(netMid(m)+netEnd(m))-(budgetMid(m)+budgetEnd(m))}));
+  const monthNets=months.map(m=>({label:m.month.slice(0,3),net:(netMid(m)+netEnd(m))-(budgetMid(m)+budgetEnd(m)),mo:m}));
   const sorted=[...monthNets].sort((a,b)=>b.net-a.net);
   const best=sorted[0],worst=sorted[sorted.length-1];
 
-  /* surplus streak (consecutive from latest month going backward) */
   let streak=0;
   for(let i=monthNets.length-1;i>=0;i--){
     if(monthNets[i].net>=0)streak++;else break;
   }
 
-  /* category totals — settled + payable */
   const catMap={};
   months.forEach(m=>m.items.forEach(it=>{
     const cat=it.category||'Other';
@@ -2841,127 +2911,160 @@ function renderSummary(){
   const catEntries=Object.entries(catMap).sort((a,b)=>b[1]-a[1]);
   const catTotal=catEntries.reduce((s,[,v])=>s+v,0)||1;
   const topCats=catEntries.slice(0,5);
-  const catColors=['#f87171','#4ade80','#fb923c','#a78bfa','#60a5fa'];
+  const _lt=document.documentElement.getAttribute('data-theme')==='light';
+  const catColors=_lt
+    ?['#dc2626','#16a34a','#ea580c','#7c3aed','#2563eb']
+    :['#f87171','#4ade80','#fb923c','#a78bfa','#60a5fa'];
 
-  /* year pills */
   const yearPills=years.map(y=>`<button class="sum-year-pill${y===sumYear?' active':''}" onclick="setSumYear('${esc(y)}')">${esc(y)}</button>`).join('');
 
-  /* savings ring SVG: r=30, circ=188.5, dashoffset=47.1 starts at top */
-  const circ=188.5;
-  const ringFill=(savRate/100*circ).toFixed(1);
-  const ringColor=savRate>=20?'var(--green)':savRate>=10?'var(--amber)':'var(--red)';
-  const ringSvg=`<svg viewBox="0 0 80 80">
-    <circle cx="40" cy="40" r="30" fill="none" stroke="var(--border2)" stroke-width="10"/>
-    <circle cx="40" cy="40" r="30" fill="none" stroke="${ringColor}" stroke-width="10"
-      stroke-dasharray="${ringFill} ${(circ-parseFloat(ringFill)).toFixed(1)}"
-      stroke-dashoffset="47.1" stroke-linecap="round"/>
-  </svg>`;
+  /* hero config */
+  const isPos=totalNet>=0;
+  const heroGrad=isPos?'linear-gradient(135deg,#14532d,#16a34a)':'linear-gradient(135deg,#7f1d1d,#dc2626)';
+  const heroText=isPos?'#bbf7d0':'#fecaca';
+  const heroLabel=isPos?'Savings Rate':'Deficit Rate';
+  const dispRate=isPos?savRate:Math.round(Math.abs(totalNet)/Math.max(totalProj,1)*100);
+  const rateSign=isPos?'+':'−';
 
-  /* vertical bar chart */
+  /* bar chart */
   const maxAbs=Math.max(...monthNets.map(mn=>Math.abs(mn.net)),1);
-  const barMaxH=72;
-  const amtRow=monthNets.map(mn=>{
-    const isPos=mn.net>=0;
-    return`<div class="trnd-amt-cell" style="color:${isPos?'var(--green)':'var(--red)'}">${fmtShort(mn.net)}</div>`;
-  }).join('');
-  const barHtml=monthNets.map(mn=>{
+  const barMaxH=64;
+  const amtRow=monthNets.map(mn=>`<div class="trnd-amt-cell" style="color:${mn.net>=0?'var(--green)':'var(--red)'}">${fmtShort(mn.net)}</div>`).join('');
+  const barHtml=monthNets.map((mn,idx)=>{
     const h=Math.max(3,Math.round(Math.abs(mn.net)/maxAbs*barMaxH));
-    const isPos=mn.net>=0;
-    return`<div class="trnd-bar-wrap">
-      <div class="trnd-bar${isPos?'':' neg'}" style="height:${h}px;background:${isPos?'var(--green)':'var(--red)'};opacity:.85"></div>
-    </div>`;
+    const isP=mn.net>=0;
+    const isCur=idx===monthNets.length-1;
+    const col=isCur?'var(--accent)':isP?'var(--green)':'var(--red)';
+    return`<div class="trnd-bar-wrap"><div class="trnd-bar${isP?'':' neg'}" style="height:${h}px;background:${col};opacity:${isCur?1:.85}"></div></div>`;
   }).join('');
   const moRow=monthNets.map(mn=>`<div class="trnd-mo">${mn.label}</div>`).join('');
 
   /* category rows */
   const catRows=topCats.map(([name,amt],i)=>{
     const pct=Math.round(amt/catTotal*100);
-    const catObj=categories.find(c=>c.name===name);
-    const iconHtml=catObj?getCatIconSvg(catObj.icon||'info',catObj.color,12):getIcon(name);
-    return`<div class="trnd-cat-row">
-      <div class="trnd-cat-row-top">
-        <div class="trnd-cat-dot" style="background:${catColors[i]}"></div>
-        <div class="trnd-cat-name">${iconHtml} ${esc(name)}</div>
-        <div class="trnd-cat-stat"><span class="trnd-cat-stat-amt">${fmtShort(amt)}</span><span class="trnd-cat-stat-pct">${pct}%</span></div>
-      </div>
-      <div class="trnd-cat-bar"><div class="trnd-cat-fill" style="width:${pct}%;background:${catColors[i]}"></div></div>
+    return`<div class="ins-cat-row">
+      <div class="ins-cat-dot" style="background:${catColors[i]}"></div>
+      <div class="ins-cat-name">${esc(name)}</div>
+      <div class="ins-cat-bar-wrap"><div class="ins-cat-bar-fill" style="width:${pct}%;background:${catColors[i]}"></div></div>
+      <div class="ins-cat-pct" style="color:${catColors[i]}">${pct}%</div>
+      <div class="ins-cat-amt">${fmtShort(amt)}</div>
     </div>`;
   }).join('');
 
-  /* insight cards */
-  const insCards=[];
+  /* insight rows */
+  let insRows='';
   if(best){
-    insCards.push(`<div class="trnd-ins">
-      <div class="trnd-ins-icon" style="background:rgba(74,222,128,.12)">🏆</div>
-      <div class="trnd-ins-body">
-        <div class="trnd-ins-title">Best Month</div>
-        <div class="trnd-ins-val" style="color:var(--green)">${best.label} &mdash; ${fmtShort(best.net)}</div>
-        <div class="trnd-ins-sub">Highest net balance this year</div>
-      </div>
-    </div>`);
+    const bInc=best.mo.projectedNetPayMid+best.mo.projectedNetPayEnd;
+    const bRate=bInc>0?Math.round(best.net/bInc*100):0;
+    insRows+=`<div class="ins-irow">
+      <div class="ins-irow-icon" style="background:rgba(74,222,128,.12)">🏆</div>
+      <div style="flex:1"><div class="ins-irow-label">Best Month</div><div class="ins-irow-sub">${best.label} ${sumYear}</div></div>
+      <div><div class="ins-irow-val" style="color:var(--green)">${fmtShort(best.net)}</div><div class="ins-irow-rate">${bRate}% rate</div></div>
+    </div>`;
   }
   if(worst&&worst!==best){
-    const worstColor=worst.net<0?'var(--red)':'var(--amber)';
-    insCards.push(`<div class="trnd-ins">
-      <div class="trnd-ins-icon" style="background:rgba(248,113,113,.12)">⚠️</div>
-      <div class="trnd-ins-body">
-        <div class="trnd-ins-title">Worst Month</div>
-        <div class="trnd-ins-val" style="color:${worstColor}">${worst.label} &mdash; ${fmtShort(worst.net)}</div>
-        <div class="trnd-ins-sub">Lowest net balance this year</div>
-      </div>
-    </div>`);
+    const wc=worst.net<0?'var(--red)':'var(--amber)';
+    const wInc=worst.mo.projectedNetPayMid+worst.mo.projectedNetPayEnd;
+    const wRate=wInc>0?Math.round(Math.abs(worst.net)/wInc*100):0;
+    insRows+=`<div class="ins-irow">
+      <div class="ins-irow-icon" style="background:rgba(248,113,113,.12)">📉</div>
+      <div style="flex:1"><div class="ins-irow-label">Worst Month</div><div class="ins-irow-sub">${worst.label} ${sumYear}</div></div>
+      <div><div class="ins-irow-val" style="color:${wc}">${fmtShort(worst.net)}</div><div class="ins-irow-rate">${worst.net<0?'deficit ':''}${wRate}%</div></div>
+    </div>`;
   }
   if(streak>1){
-    const streakLabels=monthNets.slice(-streak).map(mn=>mn.label).join(' · ');
-    insCards.push(`<div class="trnd-ins">
-      <div class="trnd-ins-icon" style="background:rgba(88,166,255,.12)">🔥</div>
-      <div class="trnd-ins-body">
-        <div class="trnd-ins-title">Surplus Streak</div>
-        <div class="trnd-ins-val" style="color:var(--accent)">${streak} month${streak>1?'s':''} in a row</div>
-        <div class="trnd-ins-sub">${streakLabels}</div>
-      </div>
-    </div>`);
+    const sl=monthNets.slice(-streak).map(mn=>mn.label).join(' · ');
+    insRows+=`<div class="ins-irow">
+      <div class="ins-irow-icon" style="background:var(--accent-soft)">🔥</div>
+      <div style="flex:1"><div class="ins-irow-label">Surplus Streak</div><div class="ins-irow-sub">${sl}</div></div>
+      <div><div class="ins-irow-val" style="color:var(--accent)">${streak} mo${streak>1?'s':''}</div><div class="ins-irow-rate">ongoing</div></div>
+    </div>`;
   }
 
   el.innerHTML=`
     <div class="sum-year-row" style="padding-top:10px">${yearPills}</div>
 
-    <div class="trnd-hero">
-      <div class="trnd-ring-box">${ringSvg}
-        <div class="trnd-ring-center">
-          <div class="trnd-ring-pct" style="color:${ringColor}">${savRate}%</div>
-          <div class="trnd-ring-sub">saved</div>
+    <div class="ins-hero">
+      <div class="ins-hero-banner" style="background:${heroGrad}">
+        <div class="ins-hero-label">${heroLabel} · ${sumYear} YTD</div>
+        <div class="ins-hero-rate-row">
+          <div class="ins-hero-rate" style="color:${heroText}"><sup>${rateSign}</sup>${dispRate}<sup style="font-size:18px;margin-top:10px">%</sup></div>
+          <div class="ins-hero-amt-col">
+            <div class="ins-hero-amt" style="color:${heroText}">${rateSign}${fmt(Math.abs(totalNet))}</div>
+            <div class="ins-hero-amt-sub">${isPos?'saved':'over budget'} · ${n} month${n!==1?'s':''}</div>
+          </div>
         </div>
-      </div>
-      <div class="trnd-hero-stats">
-        <div class="trnd-hstat"><span class="trnd-hstat-lbl">Income (ytd)</span><span class="trnd-hstat-val">${fmt(totalProj)}</span></div>
-        <div class="trnd-hstat-div"></div>
-        <div class="trnd-hstat"><span class="trnd-hstat-lbl">Settled</span><span class="trnd-hstat-val" style="color:var(--red)">${fmt(totalSpent)}</span></div>
-        ${totalBudget>0?`<div class="trnd-hstat"><span class="trnd-hstat-lbl">Payable</span><span class="trnd-hstat-val" style="color:var(--amber)">${fmt(totalBudget)}</span></div>`:''}
-        <div class="trnd-hstat-div"></div>
-        <div class="trnd-hstat"><span class="trnd-hstat-lbl">Net (ytd)</span><span class="trnd-hstat-val" style="color:${totalNet>=0?'var(--green)':'var(--red)'}">${fmt(totalNet)}</span></div>
+        <div class="ins-hero-sub">out of ${fmt(totalProj)} income</div>
+        <div class="ins-hero-footer">
+          <div class="ins-hstat"><div class="ins-hstat-label">Income</div><div class="ins-hstat-val" style="color:#bbf7d0">${fmtShort(totalProj)}</div></div>
+          <div class="ins-hstat"><div class="ins-hstat-label">Settled</div><div class="ins-hstat-val" style="color:#fca5a5">${fmtShort(totalSpent)}</div></div>
+          ${totalBudget>0?`<div class="ins-hstat"><div class="ins-hstat-label">Payable</div><div class="ins-hstat-val" style="color:#fcd34d">${fmtShort(totalBudget)}</div></div>`:''}
+        </div>
       </div>
     </div>
 
-    ${monthNets.length>1?`<div class="sum-section-label" style="margin:0 16px 8px">Monthly Net Balance</div>
-    <div class="trnd-chart">
-      <div class="trnd-amt-row">${amtRow}</div>
-      <div class="trnd-bars-area">${barHtml}</div>
-      <div class="trnd-zero"></div>
-      <div class="trnd-mo-row">${moRow}</div>
-      <div class="trnd-chart-footer">
-        <div class="trnd-leg"><div class="trnd-leg-dot" style="background:var(--green)"></div>Surplus</div>
-        <div class="trnd-leg"><div class="trnd-leg-dot" style="background:var(--red)"></div>Deficit</div>
+    <div class="ins-kpi-grid">
+      <div class="ins-kpi-cell">
+        <div class="ins-kpi-label">Avg Income / Mo</div>
+        <div class="ins-kpi-val" style="color:var(--green)">${fmtShort(avgIncome)}</div>
+        <div class="ins-kpi-sub">${n} month${n!==1?'s':''}</div>
+      </div>
+      <div class="ins-kpi-cell">
+        <div class="ins-kpi-label">Avg Expenses / Mo</div>
+        <div class="ins-kpi-val" style="color:var(--red)">${fmtShort(avgExpenses)}</div>
+        <div class="ins-kpi-sub">${n} month${n!==1?'s':''}</div>
+      </div>
+      ${best?`<div class="ins-kpi-cell">
+        <div class="ins-kpi-label">Best Month</div>
+        <div class="ins-kpi-val" style="color:var(--green)">${best.label}</div>
+        <div class="ins-kpi-sub">${fmtShort(best.net)} surplus</div>
+      </div>`:''}
+      ${worst&&worst!==best?`<div class="ins-kpi-cell">
+        <div class="ins-kpi-label">Worst Month</div>
+        <div class="ins-kpi-val" style="color:${worst.net<0?'var(--red)':'var(--amber)'}">${worst.label}</div>
+        <div class="ins-kpi-sub">${fmtShort(worst.net)} net</div>
+      </div>`:''}
+    </div>
+
+    ${monthNets.length>1?`
+    <div class="ins-sec-card">
+      <div class="ins-sec-banner" style="background:linear-gradient(135deg,#14532d,#16a34a)">
+        <div class="ins-sec-banner-title" style="color:#bbf7d0">Monthly Trend</div>
+        <div class="ins-sec-banner-badge" style="color:#bbf7d0">${sumYear}</div>
+      </div>
+      <div class="ins-sec-body">
+        <div class="trnd-amt-row">${amtRow}</div>
+        <div class="trnd-bars-area" style="height:64px">${barHtml}</div>
+        <div class="trnd-zero"></div>
+        <div class="trnd-mo-row">${moRow}</div>
+        <div class="trnd-chart-footer">
+          <div class="trnd-leg"><div class="trnd-leg-dot" style="background:var(--green)"></div>Surplus</div>
+          <div class="trnd-leg"><div class="trnd-leg-dot" style="background:var(--red)"></div>Deficit</div>
+          <div class="trnd-leg"><div class="trnd-leg-dot" style="background:var(--accent)"></div>Current</div>
+        </div>
       </div>
     </div>`:''}
 
-    ${topCats.length?`<div class="sum-section-label" style="margin:0 16px 8px">Spending by Category</div>
-    <div class="trnd-cat">
-      <div class="trnd-cat-rows">${catRows}</div>
+    ${topCats.length?`
+    <div class="ins-sec-card">
+      <div class="ins-sec-banner" style="background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 55%,#000),var(--accent))">
+        <div class="ins-sec-banner-title" style="color:#fff">Category Breakdown</div>
+        <div class="ins-sec-banner-badge" style="color:#fff">${n} mo</div>
+      </div>
+      <div class="ins-sec-body" style="padding-top:6px;padding-bottom:6px">
+        ${catRows}
+      </div>
     </div>`:''}
 
-    ${insCards.length?`<div class="sum-section-label" style="margin:0 16px 8px">Insights</div>
-    <div class="trnd-ins-list">${insCards.join('')}</div>`:''}
+    ${insRows?`
+    <div class="ins-sec-card" style="margin-bottom:24px">
+      <div class="ins-sec-banner" style="background:linear-gradient(135deg,#7f1d1d,#dc2626)">
+        <div class="ins-sec-banner-title" style="color:#fecaca">Quick Insights</div>
+      </div>
+      <div class="ins-sec-body" style="padding-top:6px;padding-bottom:6px">
+        ${insRows}
+      </div>
+    </div>`:''}
   `;
 }
 function setSumYear(y){sumYear=y;renderSummary();}
