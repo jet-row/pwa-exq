@@ -343,8 +343,11 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 .cat-bk-amt{font-size:15px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--text);width:80px;text-align:right;flex-shrink:0;}
 
 /* ── DONUT ─────────────────────────────────── */
-.donut-wrap{margin:0 16px 20px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;}
-.donut-title{font-size:14px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:14px;}
+.donut-wrap{margin:0 16px 20px;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;}
+.donut-banner{padding:10px 14px 9px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 55%,#000),var(--accent));position:relative;overflow:hidden;}
+.donut-banner::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 55%);pointer-events:none;}
+.donut-title{font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:#fff;position:relative;}
+.donut-body{background:var(--card);padding:14px 16px;}
 .donut-inner{display:flex;align-items:center;gap:16px;}
 .donut-legend{flex:1;min-width:0;display:flex;flex-direction:column;gap:9px;}
 .donut-legend-item{display:flex;align-items:center;gap:8px;min-width:0;}
@@ -1156,10 +1159,12 @@ html[data-theme="light"] .month-tile.mt-current{border-color:rgba(79,70,229,.5);
 
       <!-- Donut chart -->
       <div class="donut-wrap" id="donutWrap" style="display:none">
-        <div class="donut-title">EXPENSES BREAKDOWN</div>
+        <div class="donut-banner"><div class="donut-title">Expenses Breakdown</div></div>
+        <div class="donut-body">
         <div class="donut-inner">
           <svg id="donutSvg" width="150" height="150" viewBox="0 0 150 150" style="flex-shrink:0"></svg>
           <div class="donut-legend" id="donutLegend"></div>
+        </div>
         </div>
       </div>
 
