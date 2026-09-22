@@ -60,6 +60,7 @@ html[data-theme="light"]{
 html[data-theme="light"] #toast{box-shadow:0 4px 20px rgba(0,0,0,.10);}
 html[data-theme="light"] .hpt-btn.active{box-shadow:0 1px 4px rgba(0,0,0,.10);}
 html[data-theme="light"] .hero-card,html[data-theme="light"] .exp-group,html[data-theme="light"] .tl-card{box-shadow:0 1px 3px rgba(0,0,0,.06),inset 0 1px 0 rgba(255,255,255,.8);}
+html[data-theme="light"] .new-hero-card{box-shadow:0 2px 14px rgba(0,0,0,.1),0 1px 4px rgba(0,0,0,.06);background:color-mix(in srgb,var(--accent) 7%,var(--card));}
 /* ── THEME PICKER ───────────────────────────── */
 .theme-picker{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:0 16px 4px;}
 .theme-swatch{display:flex;flex-direction:row;align-items:center;gap:10px;background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:12px 14px;cursor:pointer;transition:all .15s;font-family:'Inter',sans-serif;}
@@ -849,18 +850,19 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 @media(min-width:700px){.income-banner{display:none;}}
 
 /* New Hero Card — period tabs + stats */
-.new-hero-card{margin:4px 14px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:inset 0 1px 0 rgba(255,255,255,.05);}
-.new-hero-card::before{content:'';position:absolute;top:0;right:0;width:220px;height:160px;background:radial-gradient(ellipse at top right,var(--accent-soft),transparent 70%);pointer-events:none;}
-.period-tabs{display:flex;border-bottom:1px solid var(--border);}
-.period-tab{flex:1;padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);cursor:pointer;transition:all .18s;border-right:1px solid var(--border);}
+.new-hero-card{margin:4px 14px 14px;background:color-mix(in srgb,var(--accent) 10%,var(--card));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:0 4px 28px rgba(0,0,0,.28),0 2px 12px var(--accent-soft),inset 0 1px 0 rgba(255,255,255,.05);}
+.new-hero-card::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 28%,transparent) 0%,transparent 70%);pointer-events:none;}
+.period-tabs{display:flex;border-bottom:1px solid rgba(0,0,0,.25);background:var(--accent);position:relative;}
+.period-tab{flex:1;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.55);cursor:pointer;transition:all .18s;border-right:1px solid rgba(255,255,255,.15);}
+.period-tabs::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 60%);pointer-events:none;}
 .period-tab:last-child{border-right:none;}
-.period-tab.active{color:var(--accent);background:var(--accent-soft);}
+.period-tab.active{color:#fff;background:rgba(255,255,255,.22);}
 .period-tab:active{opacity:.7;}
-.period-tab-dot{width:7px;height:7px;border-radius:50%;background:var(--border2);flex-shrink:0;transition:background .18s;}
-.period-tab.active .period-tab-dot{background:var(--accent);}
+.period-tab-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.3);flex-shrink:0;transition:background .18s;}
+.period-tab.active .period-tab-dot{background:#fff;}
 .hero-body{padding:12px 16px 10px;}
 .hero-net-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:3px;}
-.hero-net-amount{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:900;letter-spacing:-1.5px;line-height:1;margin-bottom:10px;transition:color .2s;}
+.hero-net-amount{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:900;letter-spacing:-1.5px;line-height:1;margin-bottom:12px;transition:color .2s;}
 .hero-progress-track{height:6px;border-radius:4px;overflow:hidden;background:var(--border2);display:flex;margin-bottom:4px;}
 .hero-progress-spent{height:100%;background:var(--red);opacity:.75;transition:width .5s ease;}
 .hero-progress-budget{height:100%;background:var(--amber);opacity:.8;transition:width .5s ease;}
@@ -874,22 +876,20 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .hero-stat-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:4px;}
 .hero-stat-value{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;transition:color .2s;}
 
-/* Flat category section for expense list */
-.cat-section-new{margin-bottom:8px;}
-.cat-section-hdr-new{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--card2);border:1px solid var(--border);border-radius:var(--radius-sm) var(--radius-sm) 0 0;cursor:pointer;transition:background .12s;position:sticky;top:0;z-index:5;box-shadow:inset 0 1px 0 rgba(255,255,255,.04);}
-.cat-section-hdr-new:hover{background:var(--card3);}
-.cat-section-hdr-new:active{transform:scale(.987);}
-.cat-sn-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0;}
-.cat-sn-name{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--text2);flex:1;}
-.cat-sn-count{font-size:11px;color:var(--muted);font-weight:600;margin-right:4px;}
-.cat-sn-total{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;color:var(--text);}
-.cat-sn-chevron{color:var(--muted);font-size:11px;transition:transform .2s;flex-shrink:0;margin-left:6px;}
-.cat-section-new.sn-collapsed .cat-sn-chevron{transform:rotate(-90deg);}
-.cat-sn-bar{height:3px;background:var(--border2);border-left:1px solid var(--border);border-right:1px solid var(--border);overflow:hidden;}
-.cat-sn-bar-fill{height:100%;transition:width .4s ease;}
-.cat-section-new.sn-collapsed .cat-sn-bar{display:none;}
-.cat-sn-items{background:var(--card);border:1px solid var(--border);border-top:none;border-radius:0 0 var(--radius-sm) var(--radius-sm);overflow:hidden;}
-.cat-section-new.sn-collapsed .cat-sn-items{display:none;}
+/* Banner card category sections */
+.bn-cat-card{margin-bottom:12px;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 16px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04);}
+.bn-cat-banner{padding:12px 14px 11px;position:relative;overflow:hidden;cursor:pointer;user-select:none;-webkit-user-select:none;transition:filter .12s;}
+.bn-cat-banner:hover{filter:brightness(1.06);}
+.bn-cat-banner:active{filter:brightness(.94);}
+.bn-cat-banner::after{content:'';position:absolute;right:-20px;top:-20px;width:88px;height:88px;border-radius:50%;background:rgba(255,255,255,.07);pointer-events:none;}
+.bn-banner-cat{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.75);margin-bottom:3px;display:flex;align-items:center;gap:6px;}
+.bn-banner-chevron{margin-left:auto;color:rgba(255,255,255,.5);font-size:11px;transition:transform .2s;flex-shrink:0;}
+.bn-cat-card.sn-collapsed .bn-banner-chevron{transform:rotate(-90deg);}
+.bn-banner-urg{font-size:9px;font-weight:800;padding:2px 7px;border-radius:10px;flex-shrink:0;}
+.bn-banner-total{font-family:'JetBrains Mono',monospace;font-size:22px;font-weight:900;letter-spacing:-1px;line-height:1;color:#fff;}
+.bn-banner-sub{font-size:10px;color:rgba(255,255,255,.6);margin-top:4px;font-weight:600;}
+.bn-cat-items{background:var(--card);}
+.bn-cat-card.sn-collapsed .bn-cat-items{display:none;}
 
 /* New flat expense item */
 .exp-flat-item{display:flex;align-items:center;gap:10px;padding:10px 12px;border-bottom:1px solid var(--border);border-left:3px solid transparent;cursor:pointer;transition:background .1s,transform .1s;}
@@ -2430,6 +2430,10 @@ function renderSvList(){
       const items=catItems[c.name];
       const catTotal=catTotals[c.name];
       const barPct=grandTotal>0?Math.min(100,Math.round(catTotal/grandTotal*100)):0;
+      const paidCount=items.filter(({it})=>(isMid?it.midStatus:it.endStatus)==='paid').length;
+      const _curgMax=items.reduce((mx,{it})=>{const tgt=isMid?it.midTarget:it.endTarget;const st=(isMid?it.midStatus:it.endStatus)||'pending';const u=tgtUrgency(tgt,st);return u==='overdue'?'overdue':u==='soon'&&mx!=='overdue'?'soon':mx;},'ok');
+      const urgBadge=_curgMax==='overdue'?`<span class="bn-banner-urg" style="background:rgba(0,0,0,.3);color:#fca5a5">⚠ overdue</span>`:_curgMax==='soon'?`<span class="bn-banner-urg" style="background:rgba(0,0,0,.25);color:#fdba74">due soon</span>`:'';
+      const subText=items.length+' item'+(items.length!==1?'s':'')+(paidCount>0?' · '+paidCount+'/'+items.length+' paid':'')+(barPct>0?' · '+barPct+'% of total':'');
       const itemRows=items.map(({it,idx})=>{
         const amt=isMid?it.mid:it.end;
         const tgt=isMid?it.midTarget:it.endTarget;
@@ -2453,16 +2457,13 @@ function renderSvList(){
           </div>
         </div>`;
       }).join('');
-      return`<div class="cat-section-new" id="csn-${c.name.replace(/\W/g,'_')}">
-        <div class="cat-section-hdr-new" onclick="toggleCatSection('csn-${c.name.replace(/\W/g,'_')}')">
-          <div class="cat-sn-dot" style="background:${c.color}"></div>
-          <span class="cat-sn-name">${esc(c.name)}</span>
-          <span class="cat-sn-count">${items.length}</span>
-          <span class="cat-sn-total">${amountsHidden?'••••':fmt(catTotal)}</span>
-          <span class="cat-sn-chevron">▾</span>
+      return`<div class="bn-cat-card" id="csn-${c.name.replace(/\W/g,'_')}">
+        <div class="bn-cat-banner" style="background:linear-gradient(135deg,${c.color}ee,${c.color}88)" onclick="toggleCatSection('csn-${c.name.replace(/\W/g,'_')}')">
+          <div class="bn-banner-cat">${getCatIconSvg(c.icon||'info','rgba(255,255,255,0.8)',12)} ${esc(c.name)} ${urgBadge}<span class="bn-banner-chevron">▾</span></div>
+          <div class="bn-banner-total">${amountsHidden?'••••':fmt(catTotal)}</div>
+          <div class="bn-banner-sub">${subText}</div>
         </div>
-        <div class="cat-sn-bar"><div class="cat-sn-bar-fill" style="width:${barPct}%;background:${c.color}"></div></div>
-        <div class="cat-sn-items">${itemRows}</div>
+        <div class="bn-cat-items">${itemRows}</div>
       </div>`;
     }).join('');
 
