@@ -613,11 +613,21 @@ input[type=file]{display:none;}
 .status-pill{display:inline-flex;align-items:center;gap:3px;padding:3px 9px;border-radius:20px;font-size:13px;font-weight:700;white-space:nowrap;pointer-events:none;}
 .sp-pending{background:var(--bg2);color:var(--muted);border:1px solid var(--border2);}
 .sp-paid{background:var(--green-soft);color:var(--green);border:1px solid rgba(74,222,128,.3);}
-.status-filter-row{display:flex;gap:6px;padding:0 0 8px;flex-wrap:wrap;}
-.sfc{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;}
-.sfc.active{background:var(--accent-soft);color:var(--accent);border-color:rgba(6,182,212,.4);}
-.sfc.f-pending.active{background:var(--card3);color:var(--dim);border-color:var(--border2);}
-.sfc.f-paid.active{background:var(--green-soft);color:var(--green);border-color:rgba(74,222,128,.4);}
+.sf-seg{display:flex;border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;margin-bottom:10px;}
+.sf-seg-btn{flex:1;padding:9px 6px 8px;text-align:center;cursor:pointer;background:none;border:none;transition:background .15s;font-family:'Inter',sans-serif;}
+.sf-seg-btn+.sf-seg-btn{border-left:1px solid var(--border);}
+.sf-seg-lbl{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);display:block;margin-bottom:4px;transition:color .15s;}
+.sf-seg-amt{font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:var(--text2);display:block;transition:color .15s;}
+.sf-seg-btn.s-all.active{background:var(--accent-soft);}
+.sf-seg-btn.s-all.active .sf-seg-lbl{color:var(--accent);}
+.sf-seg-btn.s-all.active .sf-seg-amt{color:var(--accent);}
+.sf-seg-btn.s-pending.active{background:var(--amber-soft);}
+.sf-seg-btn.s-pending.active .sf-seg-lbl{color:var(--amber);}
+.sf-seg-btn.s-pending.active .sf-seg-amt{color:var(--amber);}
+.sf-seg-btn.s-paid.active{background:var(--green-soft);}
+.sf-seg-btn.s-paid.active .sf-seg-lbl{color:var(--green);}
+.sf-seg-btn.s-paid.active .sf-seg-amt{color:var(--green);}
+.sf-seg-btn.is-empty{opacity:.3;pointer-events:none;}
 
 /* ── SEARCH BAR ─────────────────────────────── */
 .search-bar-wrap{padding:6px 16px 4px;display:none;}
@@ -860,14 +870,17 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .hero-progress-spent{height:100%;background:var(--red);opacity:.75;transition:width .5s ease;}
 .hero-progress-budget{height:100%;background:var(--amber);opacity:.8;transition:width .5s ease;}
 .hero-progress-saved{height:100%;background:var(--green);transition:width .5s ease;}
-.hero-progress-labels{display:flex;justify-content:space-between;margin-bottom:10px;}
-.hero-progress-lbl{font-size:12px;font-weight:700;color:var(--muted);}
-.hero-progress-pct{font-size:12px;font-weight:800;color:var(--green);}
-.hero-stats{display:flex;border-top:1px solid var(--border);padding-top:10px;gap:0;}
-.hero-stat{flex:1;text-align:center;}
+.hero-stats{display:flex;border-top:1px solid var(--border);gap:0;}
+.hero-stat{flex:1;text-align:center;padding:10px 6px 11px;}
 .hero-stat+.hero-stat{border-left:1px solid var(--border);}
 .hero-stat-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:4px;}
 .hero-stat-value{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;transition:color .2s;}
+.hero-progress-pills{display:flex;gap:6px;margin-bottom:10px;}
+.hpp{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:20px;font-size:12px;font-weight:700;}
+.hpp-settled{background:var(--red-soft);color:var(--red);}
+.hpp-payable{background:var(--amber-soft);color:var(--amber);}
+.hpp-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.hpp-net{margin-left:auto;font-size:12px;font-weight:800;}
 
 /* Banner card category sections */
 .bn-cat-card{margin-bottom:12px;border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 2px 16px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04);}
@@ -889,8 +902,9 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .exp-flat-item:last-child{border-bottom:none;}
 .exp-flat-item:hover{background:var(--accent-soft);}
 .exp-flat-item:active{transform:scale(.987);}
+.exp-flat-item:not(.efi-paid){border-left-color:rgba(251,146,60,.5);background:rgba(251,146,60,.04);}
 .exp-flat-item.efi-paid{border-left-color:var(--green);background:rgba(74,222,128,.025);}
-.exp-flat-item.efi-overdue{border-left-color:var(--red);}
+.exp-flat-item.efi-overdue{border-left-color:var(--red);background:rgba(251,113,113,.06);}
 .exp-flat-item.efi-soon{border-left-color:var(--amber);}
 .efi-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 .efi-info{flex:1;min-width:0;}
@@ -1046,29 +1060,30 @@ html[data-theme="light"] .month-tile.mt-current{border-color:rgba(79,70,229,.5);
           <button class="period-pin-btn" id="periodPinBtn" onclick="toggleActivePeriod()" title="Set as active period"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg></button>
         </div>
         <div class="hero-body" id="projRowWrap">
-          <div class="hero-net-label">Net Savings</div>
+          <div class="hero-net-label" id="nhNetLabel">Net Savings</div>
           <div class="hero-net-amount" id="nhNetAmt">—</div>
           <div class="hero-progress-track">
             <div class="hero-progress-spent" id="nhSpentBar" style="width:0%"></div>
             <div class="hero-progress-budget" id="nhBudgetBar" style="width:0%"></div>
             <div class="hero-progress-saved" id="nhSavedBar" style="width:0%"></div>
           </div>
-          <div class="hero-progress-labels">
-            <span class="hero-progress-lbl" id="nhProgressLbl"> </span>
-            <span class="hero-progress-pct" id="nhPct"> </span>
+          <div class="hero-progress-pills" id="nhPillRow">
+            <span class="hpp hpp-settled"><span class="hpp-dot" style="background:var(--red)"></span><span id="nhSettledPill">—</span></span>
+            <span class="hpp hpp-payable"><span class="hpp-dot" style="background:var(--amber)"></span><span id="nhPayablePill">—</span></span>
+            <span class="hpp-net" id="nhPct" style="color:var(--green)"> </span>
           </div>
           <div class="hero-stats">
-            <div class="hero-stat" style="cursor:pointer" onclick="openProjSheet()" title="Edit income">
+            <div class="hero-stat" style="cursor:pointer;background:var(--accent-soft);border-top:2px solid var(--accent)" onclick="openProjSheet()" title="Edit income">
               <div class="hero-stat-label" style="display:flex;align-items:center;justify-content:center;gap:4px;">Income <svg style="color:var(--accent);opacity:.8" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg></div>
               <div class="hero-stat-value" id="nhIncome" style="color:var(--accent)">—</div>
             </div>
-            <div class="hero-stat">
+            <div class="hero-stat" style="background:var(--amber-soft);border-top:2px solid var(--amber)">
+              <div class="hero-stat-label">Pending</div>
+              <div class="hero-stat-value" style="color:var(--amber)" id="nhPayable">—</div>
+            </div>
+            <div class="hero-stat" style="background:var(--red-soft);border-top:2px solid var(--red)">
               <div class="hero-stat-label">Settled</div>
               <div class="hero-stat-value" style="color:var(--red)" id="nhSpent">—</div>
-            </div>
-            <div class="hero-stat">
-              <div class="hero-stat-label">Payable</div>
-              <div class="hero-stat-value" style="color:var(--amber)" id="nhPayable">—</div>
             </div>
           </div>
         </div>
@@ -2123,6 +2138,8 @@ function updatePeriodPinBtn(){
 }
 let historyYr='';
 let _collapsedCats=new Set();
+let _heroNetPrev=null;
+let _heroCountRaf=null;
 let listView=localStorage.getItem('jetiq_list_view')||'compact'; // 'comfortable' | 'compact'
 function setListView(v){listView=v;localStorage.setItem('jetiq_list_view',v);renderSvList();}
 function toggleZeroItems(){showZeroItems=!showZeroItems;renderSvList();}
@@ -2140,7 +2157,7 @@ function tgtUrgency(dateStr,st){
   if(diff<=3)return'soon';
   return'ok';
 }
-function tgtColor(u){return u==='overdue'?'var(--red)':u==='soon'?'var(--amber)':'var(--accent)';}
+function tgtColor(u){return u==='overdue'?'var(--red)':'var(--amber)';}
 function sortInd(col){if(tblSortCol!==col)return'<span class="sort-ind">⇅</span>';return`<span class="sort-ind">${tblSortDir>0?'↑':'↓'}</span>`;}
 
 /* status icon SVGs — fixed 22px, no text, no layout shift */
@@ -2198,6 +2215,21 @@ function toggleCatSection(id){
   else _collapsedCats.delete(catKey);
 }
 
+function _animateHeroNet(el,from,to,color){
+  if(_heroCountRaf)cancelAnimationFrame(_heroCountRaf);
+  const dur=480,start=performance.now();
+  function tick(now){
+    const t=Math.min(1,(now-start)/dur);
+    const ease=1-Math.pow(1-t,3);
+    const cur=from+(to-from)*ease;
+    el.textContent=(cur>=0?'+':'')+fmt(cur);
+    el.style.color=cur>=0?'var(--green)':'var(--red)';
+    if(t<1)_heroCountRaf=requestAnimationFrame(tick);
+    else{el.style.color=color;_heroCountRaf=null;}
+  }
+  _heroCountRaf=requestAnimationFrame(tick);
+}
+
 function updateHeroCard(){
   const m=curMonth();
   const isMid=curPeriod==='mid';
@@ -2209,32 +2241,42 @@ function updateHeroCard(){
   const spentPct=inc>0?Math.min(100,Math.round(spent/inc*100)):0;
   const budgetPct=inc>0?Math.min(100-spentPct,Math.round(budget/inc*100)):0;
   const savedPct=Math.max(0,100-spentPct-budgetPct);
-  const savRate=inc>0?Math.max(0,Math.round((net)/inc*100)):0;
+  const savRate=inc>0?Math.max(0,Math.round(net/inc*100)):0;
 
-  // New hero card elements
   const nhNet=document.getElementById('nhNetAmt');
+  const nhNetLabel=document.getElementById('nhNetLabel');
   const nhSpentBar=document.getElementById('nhSpentBar');
   const nhBudgetBar=document.getElementById('nhBudgetBar');
   const nhSavedBar=document.getElementById('nhSavedBar');
-  const nhLbl=document.getElementById('nhProgressLbl');
   const nhPct=document.getElementById('nhPct');
   const nhInc=document.getElementById('nhIncome');
   const nhSpent=document.getElementById('nhSpent');
   const nhPayable=document.getElementById('nhPayable');
+  const nhSettledPill=document.getElementById('nhSettledPill');
+  const nhPayablePill=document.getElementById('nhPayablePill');
+
+  if(nhNetLabel)nhNetLabel.style.color=m?netColor:'var(--muted)';
 
   if(nhNet){
-    nhNet.textContent=m?(amountsHidden?'₱ ••••':(net>=0?'+':'')+fmt(net)):'—';
-    nhNet.style.color=m?netColor:'var(--muted)';
+    if(!m){nhNet.textContent='—';nhNet.style.color='var(--muted)';_heroNetPrev=null;}
+    else if(amountsHidden){nhNet.textContent='₱ ••••';nhNet.style.color=netColor;_heroNetPrev=null;}
+    else{
+      const from=_heroNetPrev===null?0:_heroNetPrev;
+      if(from!==net)_animateHeroNet(nhNet,from,net,netColor);
+      else{nhNet.textContent=(net>=0?'+':'')+fmt(net);nhNet.style.color=netColor;}
+      _heroNetPrev=net;
+    }
   }
+
   if(nhSpentBar)nhSpentBar.style.width=spentPct+'%';
   if(nhBudgetBar)nhBudgetBar.style.width=budgetPct+'%';
   if(nhSavedBar)nhSavedBar.style.width=savedPct+'%';
-  if(nhLbl)nhLbl.textContent=m?(amountsHidden?'amounts hidden':`${fmt(spent)} settled · ${fmt(budget)} payable`):'';
-  if(nhPct){nhPct.textContent=m?savRate+'% net':'';nhPct.style.color=m?netColor:'';}
+  if(nhSettledPill)nhSettledPill.textContent=m?(amountsHidden?'••••':spentPct+'% settled'):'—';
+  if(nhPayablePill)nhPayablePill.textContent=m?(amountsHidden?'••••':budgetPct+'% pending'):'—';
+  if(nhPct){nhPct.textContent=m?(savRate+'% net'):'';nhPct.style.color=m?netColor:'';}
   if(nhInc){nhInc.textContent=m?(amountsHidden?'••••':fmt(inc)):'—';}
   if(nhSpent){nhSpent.textContent=m?(amountsHidden?'••••':fmt(spent)):'—';}
   if(nhPayable){nhPayable.textContent=m?(amountsHidden?'••••':fmt(budget)):'—';}
-
 }
 
 function jumpToday(){
@@ -2271,7 +2313,7 @@ function renderDonut(items,isMid){
   wrap.style.display='';
   const catTotals={};
   nz.forEach(it=>{const cat=getCategory(it);catTotals[cat]=(catTotals[cat]||0)+(isMid?it.mid:it.end);});
-  _donutSegs=categories.filter(c=>catTotals[c.name]>0).map(c=>({name:c.name,color:c.color,amt:catTotals[c.name]}));
+  _donutSegs=categories.filter(c=>catTotals[c.name]>0).map(c=>({name:c.name,color:c.color,amt:catTotals[c.name]})).sort((a,b)=>b.amt-a.amt);
   const total=_donutSegs.reduce((s,s2)=>s+s2.amt,0);
   const cx=75,cy=75,oR=67,iR=45,GAP=0.025;
   let angle=-Math.PI/2,paths='',lgd='';
@@ -2510,12 +2552,18 @@ function renderSvList(){
       </div>`;
     }).join('');
 
-  const filterChips=['all','pending','paid'].map(f=>{
-    const labels={all:`All (${fmt(spent+budget)})`,pending:`Pending (${fmt(budget)})`,paid:`Paid (${fmt(spent)})`};
-    const isEmpty=(f==='pending'&&budget===0)||(f==='paid'&&spent===0);
-    const dimStyle=isEmpty&&statusFilter!==f?' style="opacity:.35;pointer-events:none"':'';
-    return`<button class="sfc f-${f}${statusFilter===f?' active':''}" onclick="setStatusFilter('${f}')"${dimStyle}>${labels[f]}</button>`;
+  const totalCount=statusCounts.pending+statusCounts.paid;
+  const filterSeg=['all','pending','paid'].map(f=>{
+    const counts={all:totalCount,pending:statusCounts.pending,paid:statusCounts.paid};
+    const lbls={all:'All',pending:'Pending',paid:'Settled'};
+    const isEmpty=(f==='pending'&&statusCounts.pending===0)||(f==='paid'&&statusCounts.paid===0);
+    const emptyClass=isEmpty&&statusFilter!==f?' is-empty':'';
+    const activeClass=statusFilter===f?' active':'';
+    const countVal=counts[f];
+    const countDisp=`${countVal} item${countVal!==1?'s':''}`;
+    return`<button class="sf-seg-btn s-${f}${activeClass}${emptyClass}" onclick="setStatusFilter('${f}')"><span class="sf-seg-lbl">${lbls[f]}</span><span class="sf-seg-amt">${countDisp}</span></button>`;
   }).join('');
+  const filterChips=`<div class="sf-seg">${filterSeg}</div>`;
 
   const emptyHtml=`<div class="exp-empty">No items match the current filter.</div>`;
 
@@ -2532,7 +2580,7 @@ function renderSvList(){
         <button class="exp-zero-toggle${showZeroItems?' active':''}" onclick="toggleZeroItems()" title="Show/hide ₱0 items">${showZeroItems?'Hide ₱0':'Show ₱0'}</button>
       </div>
     </div>
-    <div class="status-filter-row">${filterChips}</div>
+    ${filterChips}
     ${catSections||emptyHtml}
     ${_listFooter}
   </div>`;
