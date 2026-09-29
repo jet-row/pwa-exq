@@ -846,6 +846,11 @@ input[type=file]{display:none;}
 .cpt-footer{display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:var(--card2);border-top:2px solid var(--border);}
 .cpt-footer-lbl{font-size:15px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--dim);}
 .cpt-footer-amt{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:800;color:var(--text);}
+.pending-tag{display:inline-flex;align-items:center;gap:4px;background:var(--amber-soft);color:var(--amber);border-radius:8px;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;white-space:nowrap;}
+.settled-tag{display:inline-flex;align-items:center;gap:4px;background:var(--green-soft);color:var(--green);border-radius:8px;padding:2px 8px;font-size:12px;font-weight:700;white-space:nowrap;}
+.exp-list-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);margin-top:8px;}
+.elf-lbl{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--dim);}
+.elf-amt{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;color:var(--text);}
 
 /* ── INTEREST TRACKER ────────────────────────── */
 .int-card{border-radius:14px;overflow:hidden;border:1px solid var(--border);margin:0 16px 10px;}
@@ -907,7 +912,7 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .new-hero-card{margin:4px 14px 14px;background:color-mix(in srgb,var(--accent) 10%,var(--card));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:0 4px 28px rgba(0,0,0,.28),0 2px 12px var(--accent-soft),inset 0 1px 0 rgba(255,255,255,.05);}
 .new-hero-card::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 28%,transparent) 0%,transparent 70%);pointer-events:none;}
 .period-tabs{display:flex;border-bottom:1px solid rgba(0,0,0,.25);background:var(--accent);position:relative;}
-.period-tab{flex:1;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:rgba(255,255,255,.4);cursor:pointer;transition:all .18s;border-right:1px solid rgba(255,255,255,.15);border-bottom:2.5px solid transparent;}
+.period-tab{flex:1;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.4);cursor:pointer;transition:all .18s;border-right:1px solid rgba(255,255,255,.15);border-bottom:2.5px solid transparent;}
 .period-tabs::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 60%);pointer-events:none;}
 .period-tab:last-child{border-right:none;}
 .period-tab.active{color:#fff;background:rgba(255,255,255,.18);border-bottom:2.5px solid #fff;}
@@ -932,7 +937,7 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .hero-stats{display:flex;border-top:1px solid var(--border);padding-top:10px;gap:0;}
 .hero-stat{flex:1;text-align:center;}
 .hero-stat+.hero-stat{border-left:1px solid var(--border);}
-.hero-stat-label{font-size:9px;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:4px;}
+.hero-stat-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:4px;}
 .hero-stat-value{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:800;transition:color .2s;}
 
 /* Banner card category sections */
@@ -1133,8 +1138,8 @@ html[data-theme="light"] .month-tile.mt-current{border-color:rgba(79,70,229,.5);
               <div class="hero-stat-value" style="color:var(--red)" id="nhSpent">—</div>
             </div>
             <div class="hero-stat">
-              <div class="hero-stat-label">Net</div>
-              <div class="hero-stat-value" id="nhNet">—</div>
+              <div class="hero-stat-label">Payable</div>
+              <div class="hero-stat-value" style="color:var(--amber)" id="nhPayable">—</div>
             </div>
           </div>
         </div>
@@ -2280,7 +2285,7 @@ function updateHeroCard(){
   const nhPct=document.getElementById('nhPct');
   const nhInc=document.getElementById('nhIncome');
   const nhSpent=document.getElementById('nhSpent');
-  const nhNetStat=document.getElementById('nhNet');
+  const nhPayable=document.getElementById('nhPayable');
 
   if(nhNet){
     nhNet.textContent=m?(amountsHidden?'₱ ••••':(net>=0?'+':'')+fmt(net)):'—';
@@ -2293,7 +2298,7 @@ function updateHeroCard(){
   if(nhPct){nhPct.textContent=m?savRate+'% net':'';nhPct.style.color=m?netColor:'';}
   if(nhInc){nhInc.textContent=m?(amountsHidden?'••••':fmt(inc)):'—';}
   if(nhSpent){nhSpent.textContent=m?(amountsHidden?'••••':fmt(spent)):'—';}
-  if(nhNetStat){nhNetStat.textContent=m?(amountsHidden?'••••':(net>=0?'+':'')+fmt(net)):'—';nhNetStat.style.color=m?netColor:'';}
+  if(nhPayable){nhPayable.textContent=m?(amountsHidden?'••••':fmt(budget)):'—';}
 
 }
 
@@ -2606,11 +2611,17 @@ function renderSvList(){
     }).join('');
 
   const filterChips=['all','pending','paid'].map(f=>{
-    const labels={all:'All',pending:`Pending (${statusCounts.pending})`,paid:`Paid (${statusCounts.paid})`};
+    const labels={all:'All',pending:`Pending (${fmt(budget)})`,paid:`Paid (${fmt(spent)})`};
     return`<button class="sfc f-${f}${statusFilter===f?' active':''}" onclick="setStatusFilter('${f}')">${labels[f]}</button>`;
   }).join('');
 
   const emptyHtml=`<div class="exp-empty">No items match the current filter.</div>`;
+
+  const _footerLbl=statusFilter==='all'?`Total · ${allVisible.length} items`:`Subtotal · ${allVisible.length} items`;
+  const _unsettledTag=statusFilter==='pending'?''
+    :budget===0&&spent>0?'<span class="settled-tag">✓ All settled</span>'
+    :budget>0?`<span class="pending-tag">⬤ ${fmt(budget)}</span>`:'';
+  const _listFooter=allVisible.length?`<div class="exp-list-footer"><span class="elf-lbl">${_footerLbl}</span><div style="display:flex;align-items:center;gap:8px"><span class="elf-amt">${fmt(visibleTot)}</span>${_unsettledTag}</div></div>`:'';
 
   el.innerHTML=`<div class="exp-section">
     <div class="exp-section-hdr">
@@ -2621,6 +2632,7 @@ function renderSvList(){
     </div>
     <div class="status-filter-row">${filterChips}</div>
     ${catSections||emptyHtml}
+    ${_listFooter}
   </div>`;
 
   updateNavBadge();
