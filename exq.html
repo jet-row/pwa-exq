@@ -911,6 +911,11 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .period-tabs::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 60%);pointer-events:none;}
 .period-tab:last-child{border-right:none;}
 .period-tab.active{color:#fff;background:rgba(255,255,255,.18);border-bottom:2.5px solid #fff;}
+.period-pin-btn{width:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);transition:color .18s;position:relative;z-index:1;}
+.period-pin-btn:hover{color:rgba(255,255,255,.7);}
+.period-pin-btn.is-pinned{color:#fff;}
+.period-pin-btn.is-pinned svg{fill:currentColor;}
+.period-tab.is-active-period .period-tab-dot{background:#fff !important;box-shadow:0 0 0 2.5px rgba(255,255,255,.35) !important;}
 .period-tab:active{opacity:.7;}
 .period-tab-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);flex-shrink:0;transition:background .18s;}
 .period-tab.active .period-tab-dot{background:#fff;}
@@ -1104,6 +1109,7 @@ html[data-theme="light"] .month-tile.mt-current{border-color:rgba(79,70,229,.5);
           <div class="period-tab" onclick="setSvPeriod('end')">
             <span class="period-tab-dot"></span> Month-End
           </div>
+          <button class="period-pin-btn" id="periodPinBtn" onclick="toggleActivePeriod()" title="Set as active period"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg></button>
         </div>
         <div class="hero-body" id="projRowWrap">
           <div class="hero-net-label">Net Savings</div>
@@ -2067,7 +2073,14 @@ function switchTab(name,resetToSys=false){
   // Collapse search when leaving dashboard
   if(name!=='overview')hideSearch();
   if(name==='overview'){
-    if(resetToSys){const sys=getSysMonth(),si=(data[sys.year]||[]).findIndex(m=>m.month===sys.monthName);if(si!==-1){curYear=sys.year;curMonthIdx=si;}}
+    if(resetToSys){
+      if(pinnedPeriod&&data[pinnedPeriod.year]&&data[pinnedPeriod.year][pinnedPeriod.monthIdx]){
+        curYear=pinnedPeriod.year;curMonthIdx=pinnedPeriod.monthIdx;curPeriod=pinnedPeriod.period;
+        document.querySelectorAll('.period-tab').forEach((t,i)=>t.classList.toggle('active',(i===0&&curPeriod==='mid')||(i===1&&curPeriod==='end')));
+      } else {
+        const sys=getSysMonth(),si=(data[sys.year]||[]).findIndex(m=>m.month===sys.monthName);if(si!==-1){curYear=sys.year;curMonthIdx=si;}
+      }
+    }
     updateMonthNav();renderOverview();
   }
   if(name==='months')renderMonths();
@@ -2094,9 +2107,16 @@ function updateMonthNav(){
   const isNow=curYear===sys.year&&m?.month===sys.monthName;
   const todayBtn=document.getElementById('monthNavTodayBtn');
   if(todayBtn){
-    todayBtn.textContent=isNow?'Current':'Today';
-    todayBtn.style.opacity=isNow?'0.45':'1';
-    todayBtn.style.pointerEvents=isNow?'none':'';
+    if(pinnedPeriod){
+      const atActive=isAtActivePeriod();
+      todayBtn.textContent=atActive?'Active ✓':'Active';
+      todayBtn.style.opacity=atActive?'0.45':'1';
+      todayBtn.style.pointerEvents=atActive?'none':'';
+    } else {
+      todayBtn.textContent=isNow?'Current':'Today';
+      todayBtn.style.opacity=isNow?'0.45':'1';
+      todayBtn.style.pointerEvents=isNow?'none':'';
+    }
   }
 }
 function rebuildNavControls(){buildMonthNav();}
@@ -2147,6 +2167,26 @@ function selectFromPicker(year,idx){
 
 /* ── DASHBOARD ────────────────────────────── */
 let curPeriod='mid',showZeroItems=false,statusFilter='pending',tblSortCol='default',tblSortDir=1;
+let pinnedPeriod=loadPinnedPeriod();
+function loadPinnedPeriod(){try{const s=localStorage.getItem('jetiq_active_period');if(s)return JSON.parse(s);}catch(e){}return null;}
+function savePinnedPeriod(){try{if(pinnedPeriod)localStorage.setItem('jetiq_active_period',JSON.stringify(pinnedPeriod));else localStorage.removeItem('jetiq_active_period');}catch(e){}}
+function isAtActivePeriod(){if(!pinnedPeriod)return false;return pinnedPeriod.year===curYear&&pinnedPeriod.monthIdx===curMonthIdx&&pinnedPeriod.period===curPeriod;}
+function toggleActivePeriod(){
+  if(isAtActivePeriod()){pinnedPeriod=null;toast('Active period cleared');}
+  else{pinnedPeriod={year:curYear,monthIdx:curMonthIdx,period:curPeriod};toast((curMonth()?.month||'')+' '+curYear+' '+(curPeriod==='mid'?'Mid':'End')+' set as active ✓');}
+  savePinnedPeriod();updatePeriodPinBtn();updateMonthNav();
+}
+function updatePeriodPinBtn(){
+  const btn=document.getElementById('periodPinBtn');if(!btn)return;
+  const pinned=isAtActivePeriod();
+  btn.classList.toggle('is-pinned',pinned);
+  btn.title=pinned?'Clear active period':'Set as active period';
+  document.querySelectorAll('.period-tab').forEach((tab,i)=>{
+    const p=i===0?'mid':'end';
+    const isPin=!!pinnedPeriod&&pinnedPeriod.year===curYear&&pinnedPeriod.monthIdx===curMonthIdx&&pinnedPeriod.period===p;
+    tab.classList.toggle('is-active-period',isPin);
+  });
+}
 let historyYr='';
 let listView=localStorage.getItem('jetiq_list_view')||'compact'; // 'comfortable' | 'compact'
 function setListView(v){listView=v;localStorage.setItem('jetiq_list_view',v);renderSvList();}
@@ -2206,6 +2246,7 @@ function setSvPeriod(p){
   document.querySelectorAll('.period-tab').forEach((t,i)=>{
     t.classList.toggle('active',(i===0&&p==='mid')||(i===1&&p==='end'));
   });
+  updatePeriodPinBtn();updateMonthNav();
   updateHeroCard();
   renderSvList();
   renderDonut(curMonth()?.items||[],p==='mid');
@@ -2292,6 +2333,15 @@ function updateRings(){
 }
 
 function jumpToday(){
+  if(pinnedPeriod){
+    const{year,monthIdx,period}=pinnedPeriod;
+    if(!data[year]){toast('No data for active period','err');return;}
+    curYear=year;curMonthIdx=monthIdx;saveCurrentPos();updateHeaderSub();
+    setSvPeriod(period);
+    renderOverview();document.getElementById('screen-overview').scrollTop=0;
+    toast((data[year]?.[monthIdx]?.month||'')+' '+year+' '+(period==='mid'?'Mid':'End')+' ↩');
+    return;
+  }
   const now=new Date(),mn=MONTHS[now.getMonth()],y=String(now.getFullYear());
   if(!data[y]){toast('No data for this year','err');return;}
   const idx=data[y].findIndex(m=>m.month===mn);
@@ -2352,6 +2402,7 @@ function _hideDTip(){
 function renderOverview(){
   const m=curMonth();
   updateMonthNav();
+  updatePeriodPinBtn();
   updateHeroCard();
   updateRings();
   if(!m){
@@ -3621,11 +3672,16 @@ function doConfirmAction(){closeSheet('confirmSheet');if(_confirmCb)_confirmCb()
 /* ── INIT ─────────────────────────────────── */
 function initSelect(){
   const years=Object.keys(data).sort();
-  /* always open to the real system month if it exists in data */
-  const sys=getSysMonth();
-  const sysIdx=(data[sys.year]||[]).findIndex(m=>m.month===sys.monthName);
-  if(sysIdx!==-1){curYear=sys.year;curMonthIdx=sysIdx;}
-  else if(years.length){curYear=years[years.length-1];curMonthIdx=(data[years[years.length-1]]||[]).length-1;}
+  if(pinnedPeriod&&data[pinnedPeriod.year]&&data[pinnedPeriod.year][pinnedPeriod.monthIdx]){
+    curYear=pinnedPeriod.year;curMonthIdx=pinnedPeriod.monthIdx;curPeriod=pinnedPeriod.period;
+    document.querySelectorAll('.period-tab').forEach((t,i)=>t.classList.toggle('active',(i===0&&curPeriod==='mid')||(i===1&&curPeriod==='end')));
+  } else {
+    /* always open to the real system month if it exists in data */
+    const sys=getSysMonth();
+    const sysIdx=(data[sys.year]||[]).findIndex(m=>m.month===sys.monthName);
+    if(sysIdx!==-1){curYear=sys.year;curMonthIdx=sysIdx;}
+    else if(years.length){curYear=years[years.length-1];curMonthIdx=(data[years[years.length-1]]||[]).length-1;}
+  }
   const savedTheme=localStorage.getItem('jetiq_theme')||'slate';
   setTheme(savedTheme);
   syncThemeSwatches(savedTheme);
