@@ -847,22 +847,20 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .income-banner-edit:active{transform:scale(.93);}
 @media(min-width:700px){.income-banner{display:none;}}
 
-/* New Hero Card — period tabs + stats */
+/* New Hero Card — period pill + stats */
 .new-hero-card{margin:4px 14px 14px;background:color-mix(in srgb,var(--accent) 10%,var(--card));border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:0 4px 28px rgba(0,0,0,.28),0 2px 12px var(--accent-soft),inset 0 1px 0 rgba(255,255,255,.05);}
 .new-hero-card::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,color-mix(in srgb,var(--accent) 28%,transparent) 0%,transparent 70%);pointer-events:none;}
-.period-tabs{display:flex;border-bottom:1px solid rgba(0,0,0,.25);background:var(--accent);position:relative;}
-.period-tab{flex:1;padding:10px 12px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:rgba(255,255,255,.4);cursor:pointer;transition:all .18s;border-right:1px solid rgba(255,255,255,.15);border-bottom:2.5px solid transparent;}
-.period-tabs::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.12) 0%,rgba(255,255,255,0) 60%);pointer-events:none;}
-.period-tab:last-child{border-right:none;}
-.period-tab.active{color:#fff;background:rgba(255,255,255,.18);border-bottom:2.5px solid #fff;}
-.period-pin-btn{width:34px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);transition:color .18s;position:relative;z-index:1;}
+.period-pill-row{display:flex;align-items:center;gap:8px;margin-bottom:14px;}
+.period-pill-toggle{flex:1;display:flex;background:var(--card3);border:1px solid var(--border2);border-radius:20px;padding:3px;gap:2px;}
+.period-pill-btn{flex:1;padding:6px 12px;border-radius:17px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;color:var(--muted);display:flex;align-items:center;justify-content:center;gap:5px;cursor:pointer;transition:all .18s;border:none;background:none;font-family:'Inter',sans-serif;}
+.period-pill-btn.active{background:var(--accent);color:#000;box-shadow:0 2px 8px rgba(6,182,212,.4);}
+.period-pill-btn:active{opacity:.7;}
+.period-pill-dot{width:5px;height:5px;border-radius:50%;background:currentColor;flex-shrink:0;}
+.period-pill-btn.is-active-period .period-pill-dot{box-shadow:0 0 0 2px rgba(0,0,0,.4);}
+.period-pin-btn{width:28px;height:28px;flex-shrink:0;border-radius:8px;background:var(--card3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--muted);transition:color .18s;}
 .period-pin-btn:hover{color:rgba(255,255,255,.7);}
-.period-pin-btn.is-pinned{color:#fff;}
-.period-pin-btn.is-pinned svg{fill:currentColor;}
-.period-tab.is-active-period .period-tab-dot{background:#fff !important;box-shadow:0 0 0 2.5px rgba(255,255,255,.35) !important;}
-.period-tab:active{opacity:.7;}
-.period-tab-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.25);flex-shrink:0;transition:background .18s;}
-.period-tab.active .period-tab-dot{background:#fff;}
+.period-pin-btn.is-pinned{color:var(--accent);border-color:var(--accent);}
+.period-pin-btn.is-pinned svg{fill:var(--accent);}
 .hero-body{padding:12px 16px 10px;}
 .hero-net-label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:3px;}
 .hero-net-amount{font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:900;letter-spacing:-1.5px;line-height:1;margin-bottom:12px;transition:color .2s;}
@@ -870,7 +868,7 @@ table.int-tbl{width:100%;border-collapse:collapse;min-width:280px;}
 .hero-progress-spent{height:100%;background:var(--red);opacity:.75;transition:width .5s ease;}
 .hero-progress-budget{height:100%;background:var(--amber);opacity:.8;transition:width .5s ease;}
 .hero-progress-saved{height:100%;background:var(--green);transition:width .5s ease;}
-.hero-stats{display:flex;border-top:1px solid var(--border);gap:0;}
+.hero-stats{display:flex;border-top:1px solid var(--border);gap:0;margin:0 -16px -10px;}
 .hero-stat{flex:1;text-align:center;padding:10px 6px 11px;}
 .hero-stat+.hero-stat{border-left:1px solid var(--border);}
 .hero-stat-label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:4px;}
@@ -1050,16 +1048,14 @@ html[data-theme="light"] .month-tile.mt-current{border-color:rgba(79,70,229,.5);
 
       <!-- New Hero Card -->
       <div class="new-hero-card">
-        <div class="period-tabs">
-          <div class="period-tab active" onclick="setSvPeriod('mid')">
-            <span class="period-tab-dot"></span> Mid-Month
-          </div>
-          <div class="period-tab" onclick="setSvPeriod('end')">
-            <span class="period-tab-dot"></span> Month-End
-          </div>
-          <button class="period-pin-btn" id="periodPinBtn" onclick="toggleActivePeriod()" title="Set as active period"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg></button>
-        </div>
         <div class="hero-body" id="projRowWrap">
+          <div class="period-pill-row">
+            <div class="period-pill-toggle">
+              <button class="period-pill-btn active" onclick="setSvPeriod('mid')"><span class="period-pill-dot"></span>Mid-Month</button>
+              <button class="period-pill-btn" onclick="setSvPeriod('end')"><span class="period-pill-dot"></span>Month-End</button>
+            </div>
+            <button class="period-pin-btn" id="periodPinBtn" onclick="toggleActivePeriod()" title="Set as active period"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg></button>
+          </div>
           <div class="hero-net-label" id="nhNetLabel">Net Savings</div>
           <div class="hero-net-amount" id="nhNetAmt">—</div>
           <div class="hero-progress-track">
@@ -2025,7 +2021,7 @@ function switchTab(name,resetToSys=false){
     if(resetToSys){
       if(pinnedPeriod&&data[pinnedPeriod.year]&&data[pinnedPeriod.year][pinnedPeriod.monthIdx]){
         curYear=pinnedPeriod.year;curMonthIdx=pinnedPeriod.monthIdx;curPeriod=pinnedPeriod.period;
-        document.querySelectorAll('.period-tab').forEach((t,i)=>t.classList.toggle('active',(i===0&&curPeriod==='mid')||(i===1&&curPeriod==='end')));
+        document.querySelectorAll('.period-pill-btn').forEach((t,i)=>t.classList.toggle('active',(i===0&&curPeriod==='mid')||(i===1&&curPeriod==='end')));
       } else {
         const sys=getSysMonth(),si=(data[sys.year]||[]).findIndex(m=>m.month===sys.monthName);if(si!==-1){curYear=sys.year;curMonthIdx=si;}
       }
@@ -2130,7 +2126,7 @@ function updatePeriodPinBtn(){
   const pinned=isAtActivePeriod();
   btn.classList.toggle('is-pinned',pinned);
   btn.title=pinned?'Clear active period':'Set as active period';
-  document.querySelectorAll('.period-tab').forEach((tab,i)=>{
+  document.querySelectorAll('.period-pill-btn').forEach((tab,i)=>{
     const p=i===0?'mid':'end';
     const isPin=!!pinnedPeriod&&pinnedPeriod.year===curYear&&pinnedPeriod.monthIdx===curMonthIdx&&pinnedPeriod.period===p;
     tab.classList.toggle('is-active-period',isPin);
@@ -2182,7 +2178,7 @@ function toggleItemStatus(idx,e){
   _touch(curYear,curMonthIdx);saveData();updateHeroCard();renderSvList();updateNavBadge();
   toast(`${it.name}: ${newSt==='paid'?'Paid ✓':'Pending'}`,'ok');
 }
-function resetPeriod(){curPeriod='mid';tblSortCol='default';tblSortDir=1;statusFilter='pending';document.querySelectorAll('.hpt-btn').forEach((b,i)=>b.classList.toggle('active',i===0));document.querySelectorAll('.ring-card').forEach((c,i)=>c.classList.toggle('active',i===0));document.querySelectorAll('.period-tab').forEach((t,i)=>t.classList.toggle('active',i===0));}
+function resetPeriod(){curPeriod='mid';tblSortCol='default';tblSortDir=1;statusFilter='pending';document.querySelectorAll('.hpt-btn').forEach((b,i)=>b.classList.toggle('active',i===0));document.querySelectorAll('.ring-card').forEach((c,i)=>c.classList.toggle('active',i===0));document.querySelectorAll('.period-pill-btn').forEach((t,i)=>t.classList.toggle('active',i===0));}
 
 function setSvPeriod(p){
   curPeriod=p;
@@ -2194,8 +2190,8 @@ function setSvPeriod(p){
   document.querySelectorAll('.ring-card').forEach((c,i)=>{
     c.classList.toggle('active',(i===0&&p==='mid')||(i===1&&p==='end'));
   });
-  // new period tabs
-  document.querySelectorAll('.period-tab').forEach((t,i)=>{
+  // period pill buttons
+  document.querySelectorAll('.period-pill-btn').forEach((t,i)=>{
     t.classList.toggle('active',(i===0&&p==='mid')||(i===1&&p==='end'));
   });
   updatePeriodPinBtn();updateMonthNav();
@@ -3636,7 +3632,7 @@ function initSelect(){
   const years=Object.keys(data).sort();
   if(pinnedPeriod&&data[pinnedPeriod.year]&&data[pinnedPeriod.year][pinnedPeriod.monthIdx]){
     curYear=pinnedPeriod.year;curMonthIdx=pinnedPeriod.monthIdx;curPeriod=pinnedPeriod.period;
-    document.querySelectorAll('.period-tab').forEach((t,i)=>t.classList.toggle('active',(i===0&&curPeriod==='mid')||(i===1&&curPeriod==='end')));
+    document.querySelectorAll('.period-pill-btn').forEach((t,i)=>t.classList.toggle('active',(i===0&&curPeriod==='mid')||(i===1&&curPeriod==='end')));
   } else {
     /* always open to the real system month if it exists in data */
     const sys=getSysMonth();
